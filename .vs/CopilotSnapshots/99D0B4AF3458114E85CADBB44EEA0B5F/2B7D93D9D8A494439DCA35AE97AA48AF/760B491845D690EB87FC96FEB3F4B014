@@ -1,0 +1,1129 @@
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Windows.Forms;
+
+namespace LPR381_Assignment
+{
+    public partial class TabbedMainForm : Form
+    {
+        private string _rawModelText = string.Empty;
+        private object _lastSolveResult = null;
+
+        private MenuStrip mainMenu;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel sbStatus;
+        private ToolStripStatusLabel sbAlgo;
+        private ToolStripStatusLabel sbIter;
+        private ToolStripStatusLabel sbNode;
+
+        // Host panel that carries only content (adds top/bottom padding)
+        private Panel contentHost;
+
+        // Hidden-header TabControl
+        private HiddenTabControl tabMain;
+
+        // Tab: Model Input
+        private TabPage tabModelInput;
+        private Button btnLoadModelFile;
+        private Button btnSaveModelFile;
+        private Button btnValidateInput;
+        private Label lblModelFormat;
+        private DataGridView dgvObjective;
+        private DataGridView dgvConstraints;
+        private DataGridView dgvSignRestrictions;
+        private ComboBox cmbProblemType;
+        private ComboBox cmbObjectiveSense;
+        private Label lblProblemType;
+        private Label lblObjectiveSense;
+
+        // Tab: Algorithm
+        private TabPage tabAlgorithm;
+        private StyledGroupPanel grpAlgorithms;
+        private RadioButton rbPrimalSimplex;
+        private RadioButton rbRevisedPrimalSimplex;
+        private RadioButton rbBnBSimplex;
+        private RadioButton rbCuttingPlane;
+        private RadioButton rbBnBKnapsack;
+        private Button btnSolve;
+        private StyledGroupPanel grpOptions;
+        private CheckBox chkBinary;
+        private CheckBox chkGeneralInteger;
+
+        // Tab: Canonical Form
+        private TabPage tabCanonical;
+        private DataGridView dgvCanonicalTableau;
+        private RichTextBox rtbCanonicalNotes;
+
+        // Tab: Iterations
+        private TabPage tabIterations;
+        private ListView lvIterations;
+        private Button btnExpandAll;
+        private Button btnCollapseAll;
+
+        // Tab: Results
+        private TabPage tabResults;
+        private RichTextBox rtbResultsSummary;
+        private Button btnExportResults;
+        private Label lblRoundingNote;
+
+        // Tab: Sensitivity (controls declared so menu items can target them)
+        private TabPage tabSensitivity;
+        private StyledGroupPanel pnlSA_VarNonBasic;
+        private ComboBox saNB_VarSelect;
+        private Button saNB_ShowRange;
+        private NumericUpDown saNB_ApplyDelta;
+        private Button saNB_Apply;
+        private ListView saNB_Output;
+
+        private StyledGroupPanel pnlSA_VarBasic;
+        private ComboBox saB_VarSelect;
+        private Button saB_ShowRange;
+        private NumericUpDown saB_ApplyDelta;
+        private Button saB_Apply;
+        private ListView saB_Output;
+
+        private StyledGroupPanel pnlSA_RHS;
+        private ComboBox saRHS_ConSelect;
+        private Button saRHS_ShowRange;
+        private NumericUpDown saRHS_ApplyDelta;
+        private Button saRHS_Apply;
+        private ListView saRHS_Output;
+
+        private StyledGroupPanel pnlSA_Column;
+        private ComboBox saCol_VarSelect;
+        private Button saCol_ShowRange;
+        private Button saCol_EditCoeffs;
+        private ListView saCol_Output;
+
+        private StyledGroupPanel pnlSA_AddActivity;
+        private Button saAddAct_Add;
+        private ListView saAddAct_Output;
+
+        private StyledGroupPanel pnlSA_AddConstraint;
+        private Button saAddCon_Add;
+        private ListView saAddCon_Output;
+
+        private StyledGroupPanel pnlSA_ShadowPrices;
+        private Button saShadow_Show;
+        private ListView saShadow_Output;
+
+        private StyledGroupPanel pnlSA_Duality;
+        private Button saDual_Build;
+        private Button saDual_Solve;
+        private Button saDual_Verify;
+        private ListView saDual_Output;
+
+        // Tab: Node Explorer
+        private TabPage tabNodes;
+        private SplitContainer splitNodes;
+        private TreeView tvNodes;
+        private Panel nodeDetailsPanel;
+        private Label lblNodeTitle;
+        private Label lblNodeStatus;
+        private Label lblNodeBound;
+        private Label lblNodeIncumbent;
+        private ListView lvNodeIterations;
+
+        // Tab: Cuts
+        private TabPage tabCuts;
+        private ListView lvCuts;
+        private Button btnAddCut;
+        private Button btnClearCuts;
+
+        // Palette
+        private readonly Color CurBg = Color.FromArgb(245, 246, 248);
+        private readonly Color CurCard = Color.White;
+        private readonly Color CurAccent = Color.FromArgb(34, 139, 230);
+        private readonly Color CurAccent2 = Color.FromArgb(24, 108, 184);
+        private readonly Color CurBorder = Color.FromArgb(223, 227, 235);
+        private readonly Color CurText = Color.FromArgb(25, 28, 33);
+        private readonly Color CurMuted = Color.FromArgb(94, 98, 105);
+        private readonly Color CurHeader = Color.FromArgb(245, 246, 248);
+
+        // Fonts
+        private readonly Font UiFont = new Font("Segoe UI", 10F, FontStyle.Regular);
+        private readonly Font UiFontBold = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+
+        public TabbedMainForm()
+        {
+            Text = "LP/IP Solver - LPR381 Assignment";
+            Width = 1280;
+            Height = 860;
+            MinimumSize = new Size(1100, 700);
+            StartPosition = FormStartPosition.CenterScreen;
+
+            // reduce flicker
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
+            UpdateStyles();
+
+            InitializeComponents();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
+        // -------------------- Init & Build UI --------------------
+
+        private void InitializeComponents()
+        {
+            // Menu & Status
+            BuildMenu();
+            BuildStatusStrip();
+
+            // Content host with ONLY top/bottom padding for the main content
+            contentHost = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = CurBg,
+                Padding = new Padding(0, 12, 0, 12) // margin from menu/status
+            };
+            Controls.Add(contentHost);
+
+            // Tabs (hidden headers) inside content host
+            tabMain = new HiddenTabControl { Dock = DockStyle.Fill };
+            contentHost.Controls.Add(tabMain);
+
+            BuildTabModelInput();
+            BuildTabAlgorithm();
+            BuildTabCanonical();
+            BuildTabIterations();
+            BuildTabResults();
+            BuildTabSensitivity();   // rebuilt layout
+            BuildTabNodes();
+            BuildTabCuts();
+
+            tabMain.TabPages.AddRange(new[]
+            {
+                tabModelInput, tabAlgorithm, tabCanonical, tabIterations, tabResults, tabSensitivity, tabNodes, tabCuts
+            });
+
+            ApplyTheme();
+        }
+
+        private void BuildMenu()
+        {
+            mainMenu = new MenuStrip();
+            var mFile = new ToolStripMenuItem("&File");
+            var mSolve = new ToolStripMenuItem("&Solve");
+            var mAnalysis = new ToolStripMenuItem("&Analysis");
+            var mView = new ToolStripMenuItem("&View");
+            var mHelp = new ToolStripMenuItem("&Help");
+
+            // File
+            var miOpen = new ToolStripMenuItem("Open Model…", null, (s, e) => BtnLoadModelFile_Click(s, e));
+            var miSave = new ToolStripMenuItem("Save Model…", null, (s, e) => BtnSaveModelFile_Click(s, e));
+            var miExport = new ToolStripMenuItem("Export Results…", null, (s, e) => BtnExportResults_Click(s, e));
+            var miExit = new ToolStripMenuItem("Exit", null, (s, e) => Close());
+            mFile.DropDownItems.AddRange(new ToolStripItem[] { miOpen, miSave, new ToolStripSeparator(), miExport, new ToolStripSeparator(), miExit });
+
+            // Solve
+            var miAlgPrimal = new ToolStripMenuItem("Primal Simplex") { CheckOnClick = true };
+            var miAlgRevised = new ToolStripMenuItem("Revised Primal Simplex") { CheckOnClick = true, Checked = true };
+            var miAlgBnB = new ToolStripMenuItem("Branch & Bound (Simplex)") { CheckOnClick = true };
+            var miAlgCuts = new ToolStripMenuItem("Cutting Plane") { CheckOnClick = true };
+            var miAlgKnapsack = new ToolStripMenuItem("Branch & Bound (Knapsack)") { CheckOnClick = true };
+            miAlgPrimal.Click += (s, e) => { rbPrimalSimplex.Checked = true; SetAlgoStatus("Primal Simplex"); };
+            miAlgRevised.Click += (s, e) => { rbRevisedPrimalSimplex.Checked = true; SetAlgoStatus("Revised Primal Simplex"); };
+            miAlgBnB.Click += (s, e) => { rbBnBSimplex.Checked = true; SetAlgoStatus("B&B (Simplex)"); };
+            miAlgCuts.Click += (s, e) => { rbCuttingPlane.Checked = true; SetAlgoStatus("Cutting Plane"); };
+            miAlgKnapsack.Click += (s, e) => { rbBnBKnapsack.Checked = true; SetAlgoStatus("B&B (Knapsack)"); };
+            var miSolveNow = new ToolStripMenuItem("Solve Now", null, (s, e) => BtnSolve_Click(s, e));
+            mSolve.DropDownItems.AddRange(new ToolStripItem[] { miAlgPrimal, miAlgRevised, miAlgBnB, miAlgCuts, miAlgKnapsack, new ToolStripSeparator(), miSolveNow });
+
+            // Analysis
+            var miSensitivity = new ToolStripMenuItem("Sensitivity…", null, (s, e) => tabMain.SelectedTab = tabSensitivity);
+            var miShadow = new ToolStripMenuItem("Shadow Prices", null, (s, e) => saShadow_Show?.PerformClick());
+            var miDualBuild = new ToolStripMenuItem("Build Dual", null, (s, e) => saDual_Build?.PerformClick());
+            var miDualSolve = new ToolStripMenuItem("Solve Dual", null, (s, e) => saDual_Solve?.PerformClick());
+            var miDualVerify = new ToolStripMenuItem("Verify Duality", null, (s, e) => saDual_Verify?.PerformClick());
+            mAnalysis.DropDownItems.AddRange(new ToolStripItem[] { miSensitivity, new ToolStripSeparator(), miShadow, new ToolStripSeparator(), miDualBuild, miDualSolve, miDualVerify });
+
+            // View
+            var miViewCanonical = new ToolStripMenuItem("Canonical Form", null, (s, e) => tabMain.SelectedTab = tabCanonical);
+            var miViewIterations = new ToolStripMenuItem("Iterations", null, (s, e) => tabMain.SelectedTab = tabIterations);
+            var miViewResults = new ToolStripMenuItem("Results", null, (s, e) => tabMain.SelectedTab = tabResults);
+            var miViewNodes = new ToolStripMenuItem("Node Explorer", null, (s, e) => tabMain.SelectedTab = tabNodes);
+            var miViewCuts = new ToolStripMenuItem("Cuts", null, (s, e) => tabMain.SelectedTab = tabCuts);
+            mView.DropDownItems.AddRange(new ToolStripItem[] { miViewCanonical, miViewIterations, miViewResults, miViewNodes, miViewCuts });
+
+            // Help
+            var miAbout = new ToolStripMenuItem("About", null, (s, e) => MessageBox.Show("LP/IP Solver GUI\nAssignment scaffolding (GUI only).", "About", MessageBoxButtons.OK, MessageBoxIcon.Information));
+            mHelp.DropDownItems.Add(miAbout);
+
+            // Add top-level menus
+            mainMenu.Items.AddRange(new ToolStripItem[] { mFile, mSolve, mAnalysis, mView, mHelp });
+            mainMenu.Dock = DockStyle.Top;
+
+            Controls.Add(mainMenu);
+            MainMenuStrip = mainMenu;
+        }
+
+        private void BuildStatusStrip()
+        {
+            statusStrip = new StatusStrip();
+            sbStatus = new ToolStripStatusLabel("Ready");
+            sbAlgo = new ToolStripStatusLabel("Alg: Revised Simplex");
+            sbIter = new ToolStripStatusLabel("Iter: 0");
+            sbNode = new ToolStripStatusLabel("Node: –");
+            statusStrip.Items.AddRange(new ToolStripItem[] { sbStatus, new ToolStripStatusLabel("|"), sbAlgo, new ToolStripStatusLabel("|"), sbIter, new ToolStripStatusLabel("|"), sbNode });
+            statusStrip.Dock = DockStyle.Bottom;
+            Controls.Add(statusStrip);
+        }
+
+        private void BuildTabModelInput()
+        {
+            tabModelInput = new TabPage("Model Input");
+
+            var mainPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(20),
+                BackColor = Color.Transparent
+            };
+
+            var topPanel = new Panel { Height = 80, Dock = DockStyle.Top, BackColor = Color.Transparent };
+
+            btnLoadModelFile = new Button { Text = "Load Model From File", Width = 200, Height = 40, Top = 20 };
+            btnSaveModelFile = new Button { Text = "Save Model To File", Width = 180, Height = 40, Top = 20 };
+            btnValidateInput = new Button { Text = "Validate Input", Width = 160, Height = 40, Top = 20 };
+            btnLoadModelFile.Click += BtnLoadModelFile_Click;
+            btnSaveModelFile.Click += BtnSaveModelFile_Click;
+            btnValidateInput.Click += BtnValidateInput_Click;
+
+            void CenterTopButtons()
+            {
+                int totalWidth = btnLoadModelFile.Width + 20 + btnSaveModelFile.Width + 20 + btnValidateInput.Width;
+                int startX = Math.Max(0, (topPanel.ClientSize.Width - totalWidth) / 2);
+                btnLoadModelFile.Left = startX;
+                btnSaveModelFile.Left = startX + btnLoadModelFile.Width + 20;
+                btnValidateInput.Left = btnSaveModelFile.Left + btnSaveModelFile.Width + 20;
+            }
+            topPanel.Resize += (s, e) => CenterTopButtons();
+            topPanel.Controls.AddRange(new Control[] { btnLoadModelFile, btnSaveModelFile, btnValidateInput });
+            topPanel.CreateControl();
+            CenterTopButtons();
+
+            var formatPanel = new Panel { Height = 50, Dock = DockStyle.Top, BackColor = Color.Transparent, Padding = new Padding(0, 10, 0, 0) };
+            lblModelFormat = new Label
+            {
+                Dock = DockStyle.Fill,
+                Text = "Format: First line = max/min with signs & coefficients. Then constraints. Last line = sign restrictions.",
+                TextAlign = ContentAlignment.MiddleLeft
+            };
+            formatPanel.Controls.Add(lblModelFormat);
+
+            var selectionPanel = new Panel { Height = 60, Dock = DockStyle.Top, BackColor = Color.Transparent, Padding = new Padding(0, 10, 0, 10) };
+            lblProblemType = new Label { Text = "Problem Type:", Left = 0, Top = 0, Width = 120, Height = 20, TextAlign = ContentAlignment.MiddleLeft };
+            cmbProblemType = new ComboBox { Left = 0, Top = 25, Width = 180, DropDownStyle = ComboBoxStyle.DropDownList };
+            cmbProblemType.Items.AddRange(new[] { "LP", "Binary IP", "Knapsack" });
+            cmbProblemType.SelectedIndex = 0;
+
+            lblObjectiveSense = new Label { Text = "Objective Sense:", Left = 200, Top = 0, Width = 140, Height = 20, TextAlign = ContentAlignment.MiddleLeft };
+            cmbObjectiveSense = new ComboBox { Left = 200, Top = 25, Width = 180, DropDownStyle = ComboBoxStyle.DropDownList };
+            cmbObjectiveSense.Items.AddRange(new[] { "Maximize", "Minimize" });
+            cmbObjectiveSense.SelectedIndex = 0;
+
+            selectionPanel.Controls.AddRange(new Control[] { lblProblemType, cmbProblemType, lblObjectiveSense, cmbObjectiveSense });
+
+            var objPanel = new Panel { Height = 200, Dock = DockStyle.Top, BackColor = Color.Transparent, Padding = new Padding(0, 10, 0, 10) };
+            var lblObjective = new Label { Text = "Objective Function (sign, coefficient per variable):", Dock = DockStyle.Top, Height = 25, TextAlign = ContentAlignment.BottomLeft };
+            var spacerObjective = new Panel { Dock = DockStyle.Top, Height = 12 };
+            dgvObjective = new DataGridView { Dock = DockStyle.Fill, AllowUserToAddRows = true, AllowUserToDeleteRows = true, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, Margin = new Padding(0) };
+            dgvObjective.Columns.Add("Var", "Variable");
+            dgvObjective.Columns.Add("Sign", "Sign (+/-)");
+            dgvObjective.Columns.Add("Coeff", "Coefficient");
+            dgvObjective.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvObjective.ColumnHeadersHeight = 40;
+            objPanel.Controls.AddRange(new Control[] { dgvObjective, spacerObjective, lblObjective });
+
+            // Sign Restrictions (BOTTOM)
+            var signPanel = new Panel { Dock = DockStyle.Bottom, Height = 140, Padding = new Padding(0, 10, 0, 0) };
+            var lblSignRestrictions = new Label { Text = "Sign Restrictions (+, -, urs, int, bin):", Dock = DockStyle.Top, Height = 24, TextAlign = ContentAlignment.BottomLeft };
+            dgvSignRestrictions = new DataGridView { Dock = DockStyle.Fill, AllowUserToAddRows = true, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill };
+            dgvSignRestrictions.Columns.Add("VarName", "Variable");
+            var colRestr = new DataGridViewComboBoxColumn { Name = "Restriction", HeaderText = "Restriction" };
+            (colRestr as DataGridViewComboBoxColumn)!.Items.AddRange(new[] { "+", "-", "urs", "int", "bin" });
+            dgvSignRestrictions.Columns.Add(colRestr);
+            signPanel.Controls.AddRange(new Control[] { dgvSignRestrictions, lblSignRestrictions });
+
+            // Constraints (FILL)
+            var constraintsPanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.Transparent, Padding = new Padding(0, 16, 0, 0) };
+            var lblConstraints = new Label { Text = "Constraints (signs, coefficients, relation, RHS):", Dock = DockStyle.Top, Height = 25, TextAlign = ContentAlignment.BottomLeft };
+            var spacerConstraints = new Panel { Dock = DockStyle.Top, Height = 12 };
+            dgvConstraints = new DataGridView { Dock = DockStyle.Fill, AllowUserToAddRows = true, AllowUserToDeleteRows = true, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, Margin = new Padding(0) };
+            dgvConstraints.Columns.Add("CName", "Constraint Name");
+            dgvConstraints.Columns.Add("TechSigns", "Signs (e.g. + + - ...)");
+            dgvConstraints.Columns.Add("TechCoeffs", "Coefficients (e.g. 3 5 2 ...)");
+            dgvConstraints.Columns.Add("Relation", "Relation (<=,=,>=)");
+            dgvConstraints.Columns.Add("RHS", "Right Hand Side");
+            dgvConstraints.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvConstraints.ColumnHeadersHeight = 40;
+            constraintsPanel.Controls.AddRange(new Control[] { dgvConstraints, spacerConstraints, lblConstraints });
+
+            // ORDER
+            mainPanel.Controls.Add(constraintsPanel);    // Fill
+            mainPanel.Controls.Add(signPanel);           // Bottom
+            mainPanel.Controls.Add(objPanel);            // Top
+            mainPanel.Controls.Add(selectionPanel);      // Top
+            mainPanel.Controls.Add(formatPanel);         // Top
+            mainPanel.Controls.Add(topPanel);            // Top
+
+            // Style
+            StyleButton(btnLoadModelFile, primary: true);
+            StyleButton(btnSaveModelFile);
+            StyleButton(btnValidateInput);
+            StyleLabel(lblModelFormat, muted: true);
+            StyleLabel(lblProblemType);
+            StyleLabel(lblObjectiveSense);
+            StyleLabel(lblObjective);
+            StyleLabel(lblConstraints);
+            StyleLabel(lblSignRestrictions);
+            StyleCombo(cmbProblemType);
+            StyleCombo(cmbObjectiveSense);
+            StyleGrid(dgvObjective);
+            StyleGrid(dgvConstraints);
+            StyleGrid(dgvSignRestrictions);
+
+            tabModelInput.Controls.Add(mainPanel);
+        }
+
+        private void BuildTabAlgorithm()
+        {
+            tabAlgorithm = new TabPage("Algorithm");
+
+            var mainPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20), BackColor = Color.Transparent };
+
+            var contentPanel = new Panel { Width = 600, Height = 520, Top = 20, Anchor = AnchorStyles.Top };
+            mainPanel.Resize += (s, e) => { contentPanel.Left = Math.Max(0, (mainPanel.ClientSize.Width - contentPanel.Width) / 2); };
+
+            grpAlgorithms = new StyledGroupPanel
+            {
+                Title = "Select Algorithm",
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                Margin = new Padding(0, 0, 0, 20),
+                Padding = new Padding(16, 36, 16, 16),
+                BackColor = Color.Transparent,
+                TitleFont = UiFontBold,
+                TitleColor = CurText,
+                BorderColor = CurBorder,
+                BackgroundFill = CurBg,
+                CornerRadius = 12
+            };
+
+            rbPrimalSimplex = new RadioButton { Text = "Primal Simplex", Left = 20, Top = 40, Width = 250, Height = 25, UseVisualStyleBackColor = true };
+            rbRevisedPrimalSimplex = new RadioButton { Text = "Revised Primal Simplex", Left = 20, Top = 70, Width = 250, Height = 25, UseVisualStyleBackColor = true, Checked = true };
+            rbBnBSimplex = new RadioButton { Text = "Branch && Bound (Simplex)", Left = 20, Top = 100, Width = 250, Height = 25, UseVisualStyleBackColor = true };
+            rbCuttingPlane = new RadioButton { Text = "Cutting Plane", Left = 20, Top = 130, Width = 250, Height = 25, UseVisualStyleBackColor = true };
+            rbBnBKnapsack = new RadioButton { Text = "Branch && Bound (Knapsack)", Left = 20, Top = 160, Width = 260, Height = 25, UseVisualStyleBackColor = true };
+            grpAlgorithms.Controls.AddRange(new Control[] { rbPrimalSimplex, rbRevisedPrimalSimplex, rbBnBSimplex, rbCuttingPlane, rbBnBKnapsack });
+
+            grpOptions = new StyledGroupPanel
+            {
+                Title = "Variable Type Options",
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                Margin = new Padding(0, 20, 0, 20),
+                Padding = new Padding(16, 36, 16, 16),
+                BackColor = Color.Transparent,
+                TitleFont = UiFontBold,
+                TitleColor = CurText,
+                BorderColor = CurBorder,
+                BackgroundFill = CurBg,
+                CornerRadius = 12
+            };
+
+            chkBinary = new CheckBox { Text = "Binary Variables", Left = 20, Top = 45, Width = 170, Height = 25, UseVisualStyleBackColor = true };
+            chkGeneralInteger = new CheckBox { Text = "General Integer Variables", Left = 200, Top = 45, Width = 210, Height = 25, UseVisualStyleBackColor = true };
+            grpOptions.Controls.AddRange(new Control[] { chkBinary, chkGeneralInteger });
+
+            var buttonPanel = new Panel { Dock = DockStyle.Top, Height = 90, Padding = new Padding(0, 16, 0, 0) };
+            btnSolve = new Button { Text = "Solve Problem", Width = 220, Height = 50, Top = 16 };
+
+            void CenterSolve() => btnSolve.Left = Math.Max(0, (buttonPanel.ClientSize.Width - btnSolve.Width) / 2);
+            buttonPanel.Resize += (s, e) => CenterSolve();
+            buttonPanel.Controls.Add(btnSolve);
+            buttonPanel.CreateControl();
+            CenterSolve();
+
+            contentPanel.Controls.Add(buttonPanel);
+            contentPanel.Controls.Add(grpOptions);
+            contentPanel.Controls.Add(grpAlgorithms);
+            mainPanel.Controls.Add(contentPanel);
+
+            // Style
+            StyleRadio(rbPrimalSimplex);
+            StyleRadio(rbRevisedPrimalSimplex);
+            StyleRadio(rbBnBSimplex);
+            StyleRadio(rbCuttingPlane);
+            StyleRadio(rbBnBKnapsack);
+            StyleCheckBox(chkBinary);
+            StyleCheckBox(chkGeneralInteger);
+            StyleButton(btnSolve, primary: true);
+
+            btnSolve.Click += BtnSolve_Click;
+
+            tabAlgorithm.Controls.Add(mainPanel);
+        }
+
+        private void BuildTabCanonical()
+        {
+            tabCanonical = new TabPage("Canonical Form");
+
+            var mainPanel = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 2,
+                Padding = new Padding(20),
+            };
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 65));
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 35));
+
+            dgvCanonicalTableau = new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                AllowUserToAddRows = false,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            };
+            dgvCanonicalTableau.Columns.Add("Basis", "Basis");
+            dgvCanonicalTableau.Columns.Add("zj_cj", "zj - cj");
+            dgvCanonicalTableau.Columns.Add("x1", "x1");
+            dgvCanonicalTableau.Columns.Add("x2", "x2");
+            dgvCanonicalTableau.Columns.Add("s1", "s1");
+            dgvCanonicalTableau.Columns.Add("b", "b");
+
+            rtbCanonicalNotes = new RichTextBox
+            {
+                Dock = DockStyle.Fill,
+                ReadOnly = true,
+                Font = new Font("Consolas", 10F),
+                Text = "Canonical form and initial tableau will appear here (GUI scaffold).\nAll values will be rounded to 3 decimals in exports."
+            };
+
+            StyleGrid(dgvCanonicalTableau);
+
+            mainPanel.Controls.Add(dgvCanonicalTableau, 0, 0);
+            mainPanel.Controls.Add(rtbCanonicalNotes, 0, 1);
+            tabCanonical.Controls.Add(mainPanel);
+        }
+
+        private void BuildTabIterations()
+        {
+            tabIterations = new TabPage("Iterations");
+
+            var mainPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20), BackColor = Color.Transparent };
+
+            var bottomPanel = new Panel { Dock = DockStyle.Bottom, Height = 80, Padding = new Padding(0, 10, 0, 0) };
+            btnExpandAll = new Button { Text = "Expand All Steps", Width = 160, Height = 40, Left = 0, Top = 20 };
+            btnCollapseAll = new Button { Text = "Collapse All Steps", Width = 160, Height = 40, Left = 180, Top = 20 };
+            btnExpandAll.Click += (s, e) => ExpandCollapseAll(true);
+            btnCollapseAll.Click += (s, e) => ExpandCollapseAll(false);
+            bottomPanel.Controls.Add(btnExpandAll);
+            bottomPanel.Controls.Add(btnCollapseAll);
+
+            lvIterations = new ListView
+            {
+                Dock = DockStyle.Fill,
+                View = View.Details,
+                FullRowSelect = true,
+                GridLines = true,
+                Margin = new Padding(0, 0, 0, 10)
+            };
+            lvIterations.Columns.Add("Step", 80);
+            lvIterations.Columns.Add("Phase/Node", 160);
+            lvIterations.Columns.Add("Description", 720);
+
+            mainPanel.Controls.Add(bottomPanel);
+            mainPanel.Controls.Add(lvIterations);
+
+            StyleButton(btnExpandAll);
+            StyleButton(btnCollapseAll);
+
+            tabIterations.Controls.Add(mainPanel);
+        }
+
+        private void BuildTabResults()
+        {
+            tabResults = new TabPage("Results");
+
+            var mainPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20), BackColor = Color.Transparent };
+
+            var bottomPanel = new Panel { Dock = DockStyle.Bottom, Height = 80, Padding = new Padding(0, 10, 0, 0) };
+            btnExportResults = new Button { Text = "Export Results to File", Width = 200, Height = 40, Left = 0, Top = 20 };
+            lblRoundingNote = new Label { Text = "Note: All decimals exported to 3 dp.", AutoSize = true, Left = 220, Top = 28 };
+            btnExportResults.Click += BtnExportResults_Click;
+            bottomPanel.Controls.Add(btnExportResults);
+            bottomPanel.Controls.Add(lblRoundingNote);
+
+            rtbResultsSummary = new RichTextBox
+            {
+                Dock = DockStyle.Fill,
+                ReadOnly = true,
+                Font = new Font("Consolas", 10F),
+                Margin = new Padding(0, 0, 0, 10)
+            };
+
+            mainPanel.Controls.Add(bottomPanel);
+            mainPanel.Controls.Add(rtbResultsSummary);
+
+            StyleButton(btnExportResults, primary: true);
+            StyleLabel(lblRoundingNote, muted: true);
+
+            tabResults.Controls.Add(mainPanel);
+        }
+
+        // ===== Sensitivity tab (improved layouts) =====
+        private void BuildTabSensitivity()
+        {
+            tabSensitivity = new TabPage("Sensitivity");
+
+            var stack = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                Padding = new Padding(24),
+                BackColor = Color.Transparent
+            };
+
+            void ResizeChildren(object? s, EventArgs e)
+            {
+                int w = stack.ClientSize.Width - stack.Padding.Horizontal;
+                foreach (Control c in stack.Controls) c.Width = w;
+            }
+            stack.Resize += ResizeChildren;
+
+            // Non-Basic Variable
+            pnlSA_VarNonBasic = CreateSAGroup("Non-Basic Variable: Range • Apply Change");
+            var tl1 = MakeRowGrid();
+            saNB_VarSelect = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+            saNB_VarSelect.Items.AddRange(new[] { "x1", "x2", "x3" });
+            saNB_ShowRange = new Button { Text = "Display Range" };
+            saNB_ApplyDelta = new NumericUpDown { DecimalPlaces = 3, Minimum = -100000, Maximum = 100000 };
+            saNB_Apply = new Button { Text = "Apply Δcᵢ" };
+            saNB_Output = MakeResultList();
+            AddRowControls(tl1, saNB_VarSelect, saNB_ShowRange, saNB_ApplyDelta, saNB_Apply);
+            pnlSA_VarNonBasic.Controls.Add(tl1);
+            pnlSA_VarNonBasic.Controls.Add(saNB_Output);
+
+            // Basic Variable
+            pnlSA_VarBasic = CreateSAGroup("Basic Variable: Range • Apply Change");
+            var tl2 = MakeRowGrid();
+            saB_VarSelect = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+            saB_VarSelect.Items.AddRange(new[] { "x1", "x2", "x3" });
+            saB_ShowRange = new Button { Text = "Display Range" };
+            saB_ApplyDelta = new NumericUpDown { DecimalPlaces = 3, Minimum = -100000, Maximum = 100000 };
+            saB_Apply = new Button { Text = "Apply Δ (basic)" };
+            saB_Output = MakeResultList();
+            AddRowControls(tl2, saB_VarSelect, saB_ShowRange, saB_ApplyDelta, saB_Apply);
+            pnlSA_VarBasic.Controls.Add(tl2);
+            pnlSA_VarBasic.Controls.Add(saB_Output);
+
+            // Constraint RHS
+            pnlSA_RHS = CreateSAGroup("Constraint RHS: Range • Apply Change");
+            var tl3 = MakeRowGrid();
+            saRHS_ConSelect = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+            saRHS_ConSelect.Items.AddRange(new[] { "c1", "c2", "c3" });
+            saRHS_ShowRange = new Button { Text = "Display Range" };
+            saRHS_ApplyDelta = new NumericUpDown { DecimalPlaces = 3, Minimum = -100000, Maximum = 100000 };
+            saRHS_Apply = new Button { Text = "Apply Δbⱼ" };
+            saRHS_Output = MakeResultList();
+            AddRowControls(tl3, saRHS_ConSelect, saRHS_ShowRange, saRHS_ApplyDelta, saRHS_Apply);
+            pnlSA_RHS.Controls.Add(tl3);
+            pnlSA_RHS.Controls.Add(saRHS_Output);
+
+            // Non-Basic Column
+            pnlSA_Column = CreateSAGroup("Non-Basic Column: Range • Coeff Changes");
+            var tl4 = MakeRowGrid();
+            saCol_VarSelect = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+            saCol_VarSelect.Items.AddRange(new[] { "x1", "x2", "x3" });
+            saCol_ShowRange = new Button { Text = "Display Range" };
+            saCol_EditCoeffs = new Button { Text = "Edit Column Coeffs…" };
+            saCol_Output = MakeResultList();
+            AddRowControls(tl4, saCol_VarSelect, saCol_ShowRange, null, saCol_EditCoeffs);
+            pnlSA_Column.Controls.Add(tl4);
+            pnlSA_Column.Controls.Add(saCol_Output);
+
+            // Add Activity
+            pnlSA_AddActivity = CreateSAGroup("Add New Activity (Column)");
+            var tl5 = MakeRowGrid();
+            saAddAct_Add = new Button { Text = "Add Activity…" };
+            saAddAct_Output = MakeResultList();
+            AddRowControls(tl5, null, saAddAct_Add, null, null);
+            pnlSA_AddActivity.Controls.Add(tl5);
+            pnlSA_AddActivity.Controls.Add(saAddAct_Output);
+
+            // Add Constraint
+            pnlSA_AddConstraint = CreateSAGroup("Add New Constraint (Row)");
+            var tl6 = MakeRowGrid();
+            saAddCon_Add = new Button { Text = "Add Constraint…" };
+            saAddCon_Output = MakeResultList();
+            AddRowControls(tl6, null, saAddCon_Add, null, null);
+            pnlSA_AddConstraint.Controls.Add(tl6);
+            pnlSA_AddConstraint.Controls.Add(saAddCon_Output);
+
+            // Shadow Prices
+            pnlSA_ShadowPrices = CreateSAGroup("Shadow Prices");
+            var tl7 = MakeRowGrid();
+            saShadow_Show = new Button { Text = "Display Shadow Prices" };
+            saShadow_Output = MakeResultList();
+            AddRowControls(tl7, null, saShadow_Show, null, null);
+            pnlSA_ShadowPrices.Controls.Add(tl7);
+            pnlSA_ShadowPrices.Controls.Add(saShadow_Output);
+
+            // Duality
+            pnlSA_Duality = CreateSAGroup("Duality");
+            var tl8 = MakeRowGrid();
+            saDual_Build = new Button { Text = "Build Dual" };
+            saDual_Solve = new Button { Text = "Solve Dual" };
+            saDual_Verify = new Button { Text = "Verify Strong/Weak Duality" };
+            saDual_Output = MakeResultList();
+            AddRowControls(tl8, null, saDual_Build, null, saDual_Solve, extraRight: saDual_Verify);
+            pnlSA_Duality.Controls.Add(tl8);
+            pnlSA_Duality.Controls.Add(saDual_Output);
+
+            // Styling
+            foreach (var b in new[] { saNB_ShowRange, saNB_Apply, saB_ShowRange, saB_Apply,
+                                       saRHS_ShowRange, saRHS_Apply, saCol_ShowRange, saCol_EditCoeffs,
+                                       saAddAct_Add, saAddCon_Add, saShadow_Show, saDual_Build, saDual_Solve, saDual_Verify })
+                if (b != null) StyleButton(b);
+            foreach (var c in new[] { saNB_VarSelect, saB_VarSelect, saRHS_ConSelect, saCol_VarSelect })
+                if (c != null) StyleCombo(c);
+            foreach (var n in new[] { saNB_ApplyDelta, saB_ApplyDelta, saRHS_ApplyDelta })
+                if (n != null) { n.BackColor = CurCard; n.ForeColor = CurText; n.MinimumSize = new Size(90, 36); }
+
+            // Add to stack
+            stack.Controls.Add(pnlSA_VarNonBasic);
+            stack.Controls.Add(pnlSA_VarBasic);
+            stack.Controls.Add(pnlSA_RHS);
+            stack.Controls.Add(pnlSA_Column);
+            stack.Controls.Add(pnlSA_AddActivity);
+            stack.Controls.Add(pnlSA_AddConstraint);
+            stack.Controls.Add(pnlSA_ShadowPrices);
+            stack.Controls.Add(pnlSA_Duality);
+
+            tabSensitivity.Controls.Add(stack);
+            // initial width sync
+            stack.PerformLayout();
+        }
+
+        // -------------------- Helpers --------------------
+
+        private void ApplyTheme()
+        {
+            BackColor = CurBg;
+            ForeColor = CurText;
+            Font = UiFont;
+
+            if (mainMenu != null) { mainMenu.BackColor = CurCard; mainMenu.ForeColor = CurText; }
+            if (statusStrip != null) { statusStrip.BackColor = CurCard; statusStrip.ForeColor = CurText; }
+
+            tabMain.Padding = new Point(0, 0);
+        }
+
+        private static GraphicsPath CreateRoundRectPath(Rectangle bounds, int radius)
+        {
+            int d = radius * 2;
+            var path = new GraphicsPath();
+            path.AddArc(bounds.X, bounds.Y, d, d, 180, 90);
+            path.AddArc(bounds.Right - d, bounds.Y, d, d, 270, 90);
+            path.AddArc(bounds.Right - d, bounds.Bottom - d, d, d, 0, 90);
+            path.AddArc(bounds.X, bounds.Bottom - d, d, d, 90, 90);
+            path.CloseFigure();
+            return path;
+        }
+
+        private void ApplyRoundedRegion(Control c, int radius)
+        {
+            c.Resize -= OnRoundedResize;
+            c.Resize += OnRoundedResize;
+
+            void OnRoundedResize(object? s, EventArgs e)
+            {
+                var w = Math.Max(1, c.Width - 1);
+                var h = Math.Max(1, c.Height - 1);
+                using var gp = CreateRoundRectPath(new Rectangle(Point.Empty, new Size(w, h)), radius);
+                c.Region = new Region(gp);
+                c.Invalidate();
+            }
+
+            var iw = Math.Max(1, c.Width - 1);
+            var ih = Math.Max(1, c.Height - 1);
+            using var igp = CreateRoundRectPath(new Rectangle(Point.Empty, new Size(iw, ih)), radius);
+            c.Region = new Region(igp);
+        }
+
+        private void StyleButton(Button b, bool primary = false)
+        {
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.ForeColor = primary ? Color.White : CurText;
+            b.BackColor = primary ? CurAccent : CurCard;
+            b.Font = UiFontBold;
+            b.TextAlign = ContentAlignment.MiddleCenter;
+            b.UseVisualStyleBackColor = false;
+            b.Cursor = Cursors.Hand;
+            ApplyRoundedRegion(b, 8);
+
+            b.Paint -= ButtonPaint;
+            b.MouseEnter -= ButtonHoverEnter;
+            b.MouseLeave -= ButtonHoverLeave;
+            b.Paint += ButtonPaint;
+            b.MouseEnter += ButtonHoverEnter;
+            b.MouseLeave += ButtonHoverLeave;
+
+            void ButtonPaint(object? s, PaintEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using var path = CreateRoundRectPath(new Rectangle(0, 0, b.Width - 1, b.Height - 1), 8);
+                using var pen = new Pen(primary ? CurAccent : CurBorder);
+                e.Graphics.DrawPath(pen, path);
+            }
+            void ButtonHoverEnter(object? s, EventArgs e) { b.BackColor = primary ? CurAccent2 : ControlPaint.Light(CurCard, 0.1f); }
+            void ButtonHoverLeave(object? s, EventArgs e) { b.BackColor = primary ? CurAccent : CurCard; }
+        }
+
+        private void StyleLabel(Label l, bool muted = false)
+        {
+            l.Font = muted ? UiFont : UiFontBold;
+            l.ForeColor = muted ? CurMuted : CurText;
+            l.BackColor = Color.Transparent;
+        }
+
+        private void StyleCombo(ComboBox c)
+        {
+            c.Font = UiFont;
+            c.ForeColor = CurText;
+            c.BackColor = CurCard;
+            c.FlatStyle = FlatStyle.Flat;
+            c.Height = 36;
+            c.MinimumSize = new Size(140, 36);
+        }
+
+        private void StyleRadio(RadioButton r)
+        {
+            r.Font = UiFont;
+            r.ForeColor = CurText;
+            r.BackColor = Color.Transparent;
+            r.UseVisualStyleBackColor = true;
+        }
+
+        private void StyleCheckBox(CheckBox c)
+        {
+            c.Font = UiFont;
+            c.ForeColor = CurText;
+            c.BackColor = Color.Transparent;
+            c.UseVisualStyleBackColor = true;
+        }
+
+        private void StyleGrid(DataGridView g)
+        {
+            g.BackgroundColor = CurCard;
+            g.GridColor = CurBorder;
+            g.BorderStyle = BorderStyle.FixedSingle;
+            g.EnableHeadersVisualStyles = false;
+
+            g.ColumnHeadersDefaultCellStyle.BackColor = CurHeader;
+            g.ColumnHeadersDefaultCellStyle.ForeColor = CurText;
+            g.ColumnHeadersDefaultCellStyle.Font = UiFontBold;
+            g.ColumnHeadersDefaultCellStyle.SelectionBackColor = CurHeader;
+            g.ColumnHeadersDefaultCellStyle.SelectionForeColor = CurText;
+
+            g.DefaultCellStyle.BackColor = CurCard;
+            g.DefaultCellStyle.ForeColor = CurText;
+            g.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(CurAccent, .8f);
+            g.DefaultCellStyle.SelectionForeColor = CurText;
+            g.DefaultCellStyle.Font = UiFont;
+
+            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 251, 252);
+
+            g.RowHeadersVisible = false;
+            g.ColumnHeadersHeight = 34;
+        }
+
+        private void SetAlgoStatus(string name) => sbAlgo.Text = $"Alg: {name}";
+
+        private string GetSelectedAlgorithmName()
+        {
+            if (rbPrimalSimplex.Checked) return "Primal Simplex";
+            if (rbRevisedPrimalSimplex.Checked) return "Revised Primal Simplex";
+            if (rbBnBSimplex.Checked) return "Branch & Bound (Simplex)";
+            if (rbCuttingPlane.Checked) return "Cutting Plane";
+            if (rbBnBKnapsack.Checked) return "Branch & Bound (Knapsack)";
+            return "Unknown";
+        }
+
+        private string GenerateModelText()
+        {
+            // GUI-only placeholder
+            return "// Model text generation to be implemented";
+        }
+
+        private void ExpandCollapseAll(bool expand)
+        {
+            MessageBox.Show(expand ? "Expanded all iteration steps." : "Collapsed all iteration steps.",
+                            "Iterations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // ---------- Styled Group Panel ----------
+        internal class StyledGroupPanel : Panel
+        {
+            public string Title { get; set; } = "";
+            public Font TitleFont { get; set; } = SystemFonts.DefaultFont;
+            public Color TitleColor { get; set; } = Color.Black;
+            public Color BorderColor { get; set; } = Color.Gray;
+            public Color BackgroundFill { get; set; } = Color.White;
+            public int CornerRadius { get; set; } = 8;
+
+            public StyledGroupPanel()
+            {
+                AutoSize = true;
+                AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                Margin = new Padding(0, 0, 0, 16);
+            }
+
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                base.OnPaint(e);
+
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+                var titleSize = TextRenderer.MeasureText(Title, TitleFont);
+                int titlePadX = 20;
+                int titlePadY = 8;
+
+                int borderTop = titlePadY + (titleSize.Height / 2);
+                var bodyRect = new Rectangle(1, borderTop, Width - 2, Height - borderTop - 1);
+
+                using (var path = CreateRoundRectPath(bodyRect, CornerRadius))
+                {
+                    using (var fill = new SolidBrush(BackgroundFill))
+                        e.Graphics.FillPath(fill, path);
+
+                    using (var pen = new Pen(BorderColor, 1.5f))
+                        e.Graphics.DrawPath(pen, path);
+                }
+
+                var titleBgRect = new Rectangle(titlePadX - 4, titlePadY - 2, titleSize.Width + 8, titleSize.Height + 4);
+                using (var bg = new SolidBrush(Parent?.BackColor ?? BackgroundFill))
+                    e.Graphics.FillRectangle(bg, titleBgRect);
+
+                TextRenderer.DrawText(e.Graphics, Title, TitleFont,
+                    new Point(titlePadX, titlePadY), TitleColor,
+                    TextFormatFlags.Left | TextFormatFlags.Top | TextFormatFlags.NoPadding);
+            }
+        }
+
+        // ===== Sensitivity helpers =====
+        private StyledGroupPanel CreateSAGroup(string title)
+        {
+            return new StyledGroupPanel
+            {
+                Title = title,
+                Padding = new Padding(16, 36, 16, 16),
+                TitleFont = UiFontBold,
+                TitleColor = CurText,
+                BorderColor = CurBorder,
+                BackgroundFill = CurBg,
+                CornerRadius = 12
+            };
+        }
+
+        private TableLayoutPanel MakeRowGrid()
+        {
+            var tl = new TableLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                ColumnCount = 6,
+                Padding = new Padding(8, 4, 8, 0)
+            };
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));          // 0 left combo
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 12));      // 1 spacer
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));          // 2 button1
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));          // 3 numeric
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));          // 4 button2/extra
+            tl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));      // 5 filler
+            tl.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            return tl;
+        }
+
+        private void AddRowControls(TableLayoutPanel tl, Control? leftCombo, Control? btn1, Control? numeric, Control? btn2, Control? extraRight = null)
+        {
+            void Normalize(Control? c)
+            {
+                if (c == null) return;
+                c.Margin = new Padding(0, 0, 8, 0);
+                if (c is Button b) { b.Height = 36; b.MinimumSize = new Size(140, 36); }
+                if (c is ComboBox cb) { cb.Width = 180; cb.Height = 36; cb.MinimumSize = new Size(180, 36); }
+                if (c is NumericUpDown nud) { nud.MinimumSize = new Size(90, 36); nud.Height = 36; }
+            }
+            Normalize(leftCombo); Normalize(btn1); Normalize(numeric); Normalize(btn2); Normalize(extraRight);
+
+            if (leftCombo != null) tl.Controls.Add(leftCombo, 0, 0);
+            if (btn1 != null) tl.Controls.Add(btn1, 2, 0);
+            if (numeric != null) tl.Controls.Add(numeric, 3, 0);
+            if (btn2 != null) tl.Controls.Add(btn2, 4, 0);
+            if (extraRight != null) tl.Controls.Add(extraRight, 4, 0);
+        }
+
+        private ListView MakeResultList()
+        {
+            var lv = new ListView
+            {
+                Dock = DockStyle.Top,
+                Height = 120,
+                View = View.Details,
+                FullRowSelect = true,
+                GridLines = true,
+                Margin = new Padding(8, 10, 8, 0)
+            };
+            lv.Columns.Add("Result", 600);
+            return lv;
+        }
+
+        // -------------------- Event Handlers --------------------
+
+        private void BtnLoadModelFile_Click(object sender, EventArgs e)
+        {
+            using var ofd = new OpenFileDialog
+            {
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                Title = "Load LP/IP Model File"
+            };
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    _rawModelText = File.ReadAllText(ofd.FileName);
+                    MessageBox.Show($"Model file loaded successfully!\n\nFile: {Path.GetFileName(ofd.FileName)}",
+                                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    sbStatus.Text = "Model loaded.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading file: {ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void BtnSaveModelFile_Click(object sender, EventArgs e)
+        {
+            using var sfd = new SaveFileDialog
+            {
+                Filter = "Text files (*.txt)|*.txt",
+                FileName = "model.txt",
+                Title = "Save LP/IP Model File"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string modelText = GenerateModelText(); // TODO
+                    File.WriteAllText(sfd.FileName, modelText);
+                    MessageBox.Show($"Model saved successfully!\n\nFile: {Path.GetFileName(sfd.FileName)}",
+                                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    sbStatus.Text = "Model saved.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving file: {ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void BtnValidateInput_Click(object? sender, EventArgs e)
+        {
+            MessageBox.Show("Input format looks valid (placeholder).\n\nParsing & population to be implemented.", "Validate Input", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            sbStatus.Text = "Input validated.";
+        }
+
+        private void BtnSolve_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                rtbResultsSummary.Clear();
+                rtbResultsSummary.AppendText("=== LP/IP SOLVER RESULTS ===\n\n");
+                rtbResultsSummary.AppendText($"Problem Type: {cmbProblemType.SelectedItem}\n");
+                rtbResultsSummary.AppendText($"Objective Sense: {cmbObjectiveSense.SelectedItem}\n");
+                rtbResultsSummary.AppendText($"Algorithm: {GetSelectedAlgorithmName()}\n");
+                rtbResultsSummary.AppendText($"Binary Variables: {(chkBinary.Checked ? "Yes" : "No")}\n");
+                rtbResultsSummary.AppendText($"Integer Variables: {(chkGeneralInteger.Checked ? "Yes" : "No")}\n\n");
+                rtbResultsSummary.AppendText("STATUS: Ready to solve (GUI scaffold)\n");
+                rtbResultsSummary.AppendText("OPTIMAL VALUE: [To be calculated]\n");
+                rtbResultsSummary.AppendText("SOLUTION VECTOR: [To be calculated]\n\n");
+                rtbResultsSummary.AppendText("Note: Algorithm implementation in progress...\n");
+
+                sbStatus.Text = "Solve started (placeholder).";
+                sbIter.Text = "Iter: 0";
+                tabMain.SelectedTab = tabResults;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during solving: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnExportResults_Click(object sender, EventArgs e)
+        {
+            using var sfd = new SaveFileDialog
+            {
+                Filter = "Text files(*.txt) | *.txt",
+                FileName = "results.txt",
+                Title = "Export Results"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    File.WriteAllText(sfd.FileName, rtbResultsSummary.Text);
+                    MessageBox.Show($"Results exported successfully!\n\nFile: {Path.GetFileName(sfd.FileName)}",
+                                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    sbStatus.Text = "Results exported.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error exporting results: {ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// A TabControl whose tab headers are hidden. Pages are still switchable programmatically.
+    /// </summary>
+    internal class HiddenTabControl : TabControl
+    {
+        public HiddenTabControl()
+        {
+            Appearance = TabAppearance.Buttons;
+            ItemSize = new Size(0, 1);
+            SizeMode = TabSizeMode.Fixed;
+            Multiline = true;
+            Padding = new Point(0, 0);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs ke)
+        {
+            if (ke.Control && (ke.KeyCode == Keys.Tab)) { ke.Handled = true; return; }
+            base.OnKeyDown(ke);
+        }
+    }
+}
