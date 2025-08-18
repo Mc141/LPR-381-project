@@ -1,14 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR381-Assignment\\",
+  "WorkspaceRootPath": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr381-assignment\\tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\ui\\helpers\\controlstyler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\helpers\\controlstyler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR381-Assignment\\tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\ui\\controls\\hiddentabcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\controls\\hiddentabcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\ui\\controls\\styledgrouppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\controls\\styledgrouppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\ui\\helpers\\graphicshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\helpers\\graphicshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\onedrive - belgiumcampus.ac.za\\year 3\\lpr381\\assignments\\project\\lpr-381-project\\ui\\themes\\apptheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\themes\\apptheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,26 +47,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TabbedMainForm.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR381-Assignment\\TabbedMainForm.cs",
-              "RelativeDocumentMoniker": "TabbedMainForm.cs",
-              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR381-Assignment\\TabbedMainForm.cs",
-              "RelativeToolTip": "TabbedMainForm.cs",
-              "ViewState": "AgIAACwEAAAAAAAAAAAgwDAEAAAAAAAAAAAAAA==",
+              "Title": "ControlStyler.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Helpers\\ControlStyler.cs",
+              "RelativeDocumentMoniker": "UI\\Helpers\\ControlStyler.cs",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Helpers\\ControlStyler.cs",
+              "RelativeToolTip": "UI\\Helpers\\ControlStyler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T17:48:30.78Z",
+              "WhenOpened": "2025-08-18T00:46:26.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppTheme.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Themes\\AppTheme.cs",
+              "RelativeDocumentMoniker": "UI\\Themes\\AppTheme.cs",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Themes\\AppTheme.cs",
+              "RelativeToolTip": "UI\\Themes\\AppTheme.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T00:45:48.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GraphicsHelper.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Helpers\\GraphicsHelper.cs",
+              "RelativeDocumentMoniker": "UI\\Helpers\\GraphicsHelper.cs",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Helpers\\GraphicsHelper.cs",
+              "RelativeToolTip": "UI\\Helpers\\GraphicsHelper.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAUwBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T00:45:27.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StyledGroupPanel.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Controls\\StyledGroupPanel.cs",
+              "RelativeDocumentMoniker": "UI\\Controls\\StyledGroupPanel.cs",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Controls\\StyledGroupPanel.cs",
+              "RelativeToolTip": "UI\\Controls\\StyledGroupPanel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T00:45:11.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HiddenTabControl.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Controls\\HiddenTabControl.cs",
+              "RelativeDocumentMoniker": "UI\\Controls\\HiddenTabControl.cs",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\UI\\Controls\\HiddenTabControl.cs",
+              "RelativeToolTip": "UI\\Controls\\HiddenTabControl.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAIwB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T00:44:50.558Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TabbedMainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR381-Assignment\\TabbedMainForm.cs",
+              "Title": "TabbedMainForm.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\TabbedMainForm.cs",
               "RelativeDocumentMoniker": "TabbedMainForm.cs",
-              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\LPR381-Assignment\\TabbedMainForm.cs [Design]",
-              "RelativeToolTip": "..\\..\\LPR381-Assignment\\TabbedMainForm.cs [Design]",
+              "ToolTip": "C:\\Users\\MC\\OneDrive - belgiumcampus.ac.za\\Year 3\\LPR381\\Assignments\\Project\\LPR-381-project\\TabbedMainForm.cs",
+              "RelativeToolTip": "TabbedMainForm.cs",
+              "ViewState": "AgIAANoDAAAAAAAAAAAAAN0DAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T17:47:10.293Z"
+              "WhenOpened": "2025-08-09T17:48:30.78Z",
+              "EditorCaption": ""
             }
           ]
         }

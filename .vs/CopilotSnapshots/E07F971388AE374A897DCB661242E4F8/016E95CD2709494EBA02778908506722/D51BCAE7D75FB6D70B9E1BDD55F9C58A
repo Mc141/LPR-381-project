@@ -1,0 +1,132 @@
+﻿using System.Drawing;
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using LPR381_Assignment.UI.Themes;
+
+namespace LPR381_Assignment.UI.Helpers
+{
+    // Static helper for styling WinForms controls consistently
+    internal static class ControlStyler
+    {
+        // Applies a rounded region to a control for custom corners
+        private static void ApplyRoundedRegion(Control c, int radius)
+        {
+            // Handler to update region on resize
+            void OnRoundedResize(object? s, EventArgs e)
+            {
+                var w = Math.Max(1, c.Width - 1);
+                var h = Math.Max(1, c.Height - 1);
+                using var gp = GraphicsHelper.CreateRoundRectPath(new Rectangle(Point.Empty, new Size(w, h)), radius);
+                c.Region = new Region(gp);
+                c.Invalidate();
+            }
+
+            c.Resize -= OnRoundedResize;
+            c.Resize += OnRoundedResize;
+
+            // Initial region set
+            var iw = Math.Max(1, c.Width - 1);
+            var ih = Math.Max(1, c.Height - 1);
+            using var igp = GraphicsHelper.CreateRoundRectPath(new Rectangle(Point.Empty, new Size(iw, ih)), radius);
+            c.Region = new Region(igp);
+        }
+
+        // Styles a button with theme colors, rounded corners, and hover effects
+        public static void StyleButton(Button b, bool primary = false)
+        {
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.ForeColor = primary ? Color.White : AppTheme.Text;
+            b.BackColor = primary ? AppTheme.Accent : AppTheme.Card;
+            b.Font = AppTheme.Bold;
+            b.TextAlign = ContentAlignment.MiddleCenter;
+            b.UseVisualStyleBackColor = false;
+            b.Cursor = Cursors.Hand;
+            ApplyRoundedRegion(b, 8);
+
+            // Remove previous event handlers to avoid duplicates
+            b.Paint -= ButtonPaint;
+            b.MouseEnter -= ButtonHoverEnter;
+            b.MouseLeave -= ButtonHoverLeave;
+            b.Paint += ButtonPaint;
+            b.MouseEnter += ButtonHoverEnter;
+            b.MouseLeave += ButtonHoverLeave;
+
+            // Custom paint for border and rounded corners
+            void ButtonPaint(object? s, PaintEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using var path = GraphicsHelper.CreateRoundRectPath(new Rectangle(0, 0, b.Width - 1, b.Height - 1), 8);
+                using var pen = new Pen(primary ? AppTheme.Accent : AppTheme.Border);
+                e.Graphics.DrawPath(pen, path);
+            }
+             // Change background on hover
+            void ButtonHoverEnter(object? s, EventArgs e) { b.BackColor = primary ? AppTheme.AccentDark : ControlPaint.Light(AppTheme.Card, 0.1f); }
+            void ButtonHoverLeave(object? s, EventArgs e) { b.BackColor = primary ? AppTheme.Accent : AppTheme.Card; }
+        }
+
+        // Styles a label for either normal or muted appearance
+        public static void StyleLabel(Label l, bool muted = false)
+        {
+            l.Font = muted ? AppTheme.Default : AppTheme.Bold;
+            l.ForeColor = muted ? AppTheme.TextMuted : AppTheme.Text;
+            l.BackColor = Color.Transparent;
+        }
+
+        // Styles a ComboBox for consistent look
+        public static void StyleCombo(ComboBox c)
+        {
+            c.Font = AppTheme.Default;
+            c.ForeColor = AppTheme.Text;
+            c.BackColor = AppTheme.Card;
+            c.FlatStyle = FlatStyle.Flat;
+        }
+
+        // Styles a RadioButton for theme consistency
+        public static void StyleRadio(RadioButton r)
+        {
+            r.Font = AppTheme.Default;
+            r.ForeColor = AppTheme.Text;
+            r.BackColor = Color.Transparent;
+            r.UseVisualStyleBackColor = true;
+        }
+
+        // Styles a CheckBox for theme consistency
+        public static void StyleCheckBox(CheckBox c)
+        {
+            c.Font = AppTheme.Default;
+            c.ForeColor = AppTheme.Text;
+            c.BackColor = Color.Transparent;
+            c.UseVisualStyleBackColor = true;
+        }
+
+        // Styles a DataGridView for theme colors and fonts
+        public static void StyleGrid(DataGridView g)
+        {
+            g.BackgroundColor = AppTheme.Card;
+            g.GridColor = AppTheme.Border;
+            g.BorderStyle = BorderStyle.FixedSingle;
+            g.EnableHeadersVisualStyles = false;
+
+            // Header styling
+            g.ColumnHeadersDefaultCellStyle.BackColor = AppTheme.Header;
+            g.ColumnHeadersDefaultCellStyle.ForeColor = AppTheme.Text;
+            g.ColumnHeadersDefaultCellStyle.Font = AppTheme.Bold;
+            g.ColumnHeadersDefaultCellStyle.SelectionBackColor = AppTheme.Header;
+            g.ColumnHeadersDefaultCellStyle.SelectionForeColor = AppTheme.Text;
+
+            // Row styling
+            g.DefaultCellStyle.BackColor = AppTheme.Card;
+            g.DefaultCellStyle.ForeColor = AppTheme.Text;
+            g.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(AppTheme.Accent, .8f);
+            g.DefaultCellStyle.SelectionForeColor = AppTheme.Text;
+            g.DefaultCellStyle.Font = AppTheme.Default;
+
+            // Alternate row color for readability
+            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 251, 252);
+
+            g.RowHeadersVisible = false;
+            g.ColumnHeadersHeight = 34;
+        }
+    }
+}

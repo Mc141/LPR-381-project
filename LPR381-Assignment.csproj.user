@@ -4,5 +4,11 @@
     <Compile Update="TabbedMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\Controls\HiddenTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\StyledGroupPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

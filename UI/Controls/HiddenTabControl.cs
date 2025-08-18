@@ -1,0 +1,30 @@
+using System.Windows.Forms;
+using System.Drawing;
+
+namespace LPR381_Assignment.UI.Controls
+{
+    // TabControl with hidden tab headers for custom navigation
+    internal class HiddenTabControl : TabControl
+    {
+        public HiddenTabControl()
+        {
+            // Hide headers by making them 1px tall; fixed sizing prevents WinForms from recalculating
+            Appearance = TabAppearance.Buttons;
+            ItemSize = new Size(0, 1);
+            SizeMode = TabSizeMode.Fixed;
+            Multiline = true;
+            Padding = new Point(0, 0);
+        }
+
+        // Prevent Ctrl+Tab cycling since headers are hidden
+        protected override void OnKeyDown(KeyEventArgs ke)
+        {
+            if (ke.Control && (ke.KeyCode == Keys.Tab))
+            {
+                ke.Handled = true;
+                return;
+            }
+            base.OnKeyDown(ke);
+        }
+    }
+}

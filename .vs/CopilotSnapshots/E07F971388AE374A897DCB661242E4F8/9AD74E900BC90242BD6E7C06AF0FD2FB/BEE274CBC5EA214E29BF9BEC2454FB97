@@ -1,0 +1,22 @@
+﻿using System.Drawing;
+
+namespace LPR381_Assignment.UI.Themes
+{
+    // Centralized color palette and fonts for the application
+    internal static class AppTheme
+    {
+        // Colors
+        public static readonly Color Background = Color.FromArgb(245, 246, 248);
+        public static readonly Color Card = Color.White;
+        public static readonly Color Accent = Color.FromArgb(34, 139, 230);
+        public static readonly Color AccentDark = Color.FromArgb(24, 108, 184);
+        public static readonly Color Border = Color.FromArgb(223, 227, 235);
+        public static readonly Color Text = Color.FromArgb(25, 28, 33);
+        public static readonly Color TextMuted = Color.FromArgb(94, 98, 105);
+        public static readonly Color Header = Color.FromArgb(245, 246, 248);
+
+        // Fonts
+        public static readonly Font Default = new Font("Segoe UI", 10F, FontStyle.Regular);
+        public static readonly Font Bold = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+    }
+}
