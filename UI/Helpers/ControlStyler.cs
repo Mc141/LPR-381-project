@@ -38,7 +38,7 @@ namespace LPR381_Assignment.UI.Helpers
             b.FlatAppearance.BorderSize = 0;
             b.ForeColor = primary ? Color.White : AppTheme.Text;
             b.BackColor = primary ? AppTheme.Accent : AppTheme.Card;
-            b.Font = AppTheme.Bold;
+            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold); // Use regular Segoe UI instead of Semibold for better Unicode support
             b.TextAlign = ContentAlignment.MiddleCenter;
             b.UseVisualStyleBackColor = false;
             b.Cursor = Cursors.Hand;
@@ -79,7 +79,7 @@ namespace LPR381_Assignment.UI.Helpers
             c.Font = AppTheme.Default;
             c.ForeColor = AppTheme.Text;
             c.BackColor = AppTheme.Card;
-            c.FlatStyle = FlatStyle.Flat;
+            c.FlatStyle = FlatStyle.Standard;
         }
 
         // Styles a RadioButton for theme consistency
@@ -120,13 +120,23 @@ namespace LPR381_Assignment.UI.Helpers
             g.DefaultCellStyle.ForeColor = AppTheme.Text;
             g.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(AppTheme.Accent, .8f);
             g.DefaultCellStyle.SelectionForeColor = AppTheme.Text;
-            g.DefaultCellStyle.Font = AppTheme.Default;
+        }
 
-            // Alternate row color for readability
-            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 251, 252);
+        // Styles a NumericUpDown control for consistent appearance with the application theme
+        public static void StyleNumericUpDown(NumericUpDown nud)
+        {
+            nud.Font = AppTheme.Default;
+            nud.ForeColor = AppTheme.Text;
+            nud.BackColor = AppTheme.Card;
+        }
 
-            g.RowHeadersVisible = false;
-            g.ColumnHeadersHeight = 34;
+        // Styles a ListView control for consistent appearance with the application theme
+        public static void StyleListView(ListView lv)
+        {
+            lv.Font = AppTheme.Default;
+            lv.ForeColor = AppTheme.Text;
+            lv.BackColor = AppTheme.Card;
+            lv.BorderStyle = BorderStyle.FixedSingle;
         }
     }
 }
