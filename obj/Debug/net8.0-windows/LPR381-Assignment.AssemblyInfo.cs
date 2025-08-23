@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LPR381-Assignment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d5cc39587905ba0eba1ff2116372efdb556ef38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c0ce17180021574e84635be5519f0ec305156a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("LPR381-Assignment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LPR381-Assignment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
