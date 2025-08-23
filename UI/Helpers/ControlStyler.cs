@@ -120,9 +120,16 @@ namespace LPR381_Assignment.UI.Helpers
             g.DefaultCellStyle.ForeColor = AppTheme.Text;
             g.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(AppTheme.Accent, .8f);
             g.DefaultCellStyle.SelectionForeColor = AppTheme.Text;
+            g.DefaultCellStyle.Font = AppTheme.Default;
+
+            // Alternate row color for readability
+            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 251, 252);
+
+            g.RowHeadersVisible = false;
+            g.ColumnHeadersHeight = 34;
         }
 
-        // Styles a NumericUpDown control for consistent appearance with the application theme
+        // Styles a NumericUpDown for theme consistency
         public static void StyleNumericUpDown(NumericUpDown nud)
         {
             nud.Font = AppTheme.Default;
@@ -130,12 +137,12 @@ namespace LPR381_Assignment.UI.Helpers
             nud.BackColor = AppTheme.Card;
         }
 
-        // Styles a ListView control for consistent appearance with the application theme
+        // Styles a ListView for theme consistency
         public static void StyleListView(ListView lv)
         {
-            lv.Font = AppTheme.Default;
-            lv.ForeColor = AppTheme.Text;
             lv.BackColor = AppTheme.Card;
+            lv.ForeColor = AppTheme.Text;
+            lv.Font = AppTheme.Default;
             lv.BorderStyle = BorderStyle.FixedSingle;
         }
     }

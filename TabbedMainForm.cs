@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LPR381_Assignment.Models;
 using LPR381_Assignment.Services;
+using LPR381_Assignment.Services.Analysis;
 using LPR381_Assignment.UI.Controls;
 using LPR381_Assignment.UI.Helpers;
 using LPR381_Assignment.UI.Themes;
@@ -18,6 +19,7 @@ namespace LPR381_Assignment
         private string _rawModelText = string.Empty;
         private LPModel? _currentModel = null;
         private readonly ModelParser _modelParser = new();
+        private readonly ShadowPriceCalculator _shadowPriceCalculator = new();
 
         // Menu & Status controls
         private MenuStrip mainMenu;
@@ -117,7 +119,7 @@ namespace LPR381_Assignment
         private StyledGroupPanel pnlSA_ShadowPrices;
         private Button saShadow_Show;
         private ListView saShadow_Output;
-
+        
         private StyledGroupPanel pnlSA_Duality;
         private Button saDual_Build;
         private Button saDual_Solve;
@@ -145,9 +147,14 @@ namespace LPR381_Assignment
         public TabbedMainForm()
         {
             Text = "LP/IP Solver - LPR381 Assignment";
-            Width = 1280;
-            Height = 860;
-            MinimumSize = new Size(1100, 700);
+            
+            // Set full screen and disable resizing
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = true; // Keep minimize button for user convenience
+            
+            // Remove fixed size constraints since we're using full screen
             StartPosition = FormStartPosition.CenterScreen;
 
             // Reduce flicker for smoother UI
@@ -740,7 +747,7 @@ namespace LPR381_Assignment
             pnlSA_AddActivity.Margin = new Padding(0, 0, 12, 16);
             pnlSA_AddActivity.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saAddAct_Add = new Button { Text = "Add Activity…", Left = 20, Top = 50, Width = 180, Height = 40 };
-            saAddAct_Output = CreateCompactOutputList(220, 50, 340, 90);
+            saAddAct_Output = CreateCompactOutputList(220, 50, 500, 90);
             pnlSA_AddActivity.Controls.AddRange(new Control[] { saAddAct_Add, saAddAct_Output });
 
             // Add Constraint
@@ -748,26 +755,30 @@ namespace LPR381_Assignment
             pnlSA_AddConstraint.Margin = new Padding(12, 0, 0, 16);
             pnlSA_AddConstraint.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saAddCon_Add = new Button { Text = "Add Constraint…", Left = 20, Top = 50, Width = 180, Height = 40 };
-            saAddCon_Output = CreateCompactOutputList(220, 50, 340, 90);
+            saAddCon_Output = CreateCompactOutputList(220, 50, 500, 90);
             pnlSA_AddConstraint.Controls.AddRange(new Control[] { saAddCon_Add, saAddCon_Output });
 
             // Shadow Prices - Fixed button positioning and consistent textbox layout
-            pnlSA_ShadowPrices = CreateSAGroup("Shadow Prices", 240);
+            pnlSA_ShadowPrices = CreateSAGroup("Shadow Prices", 320);
             pnlSA_ShadowPrices.Margin = new Padding(0, 0, 12, 16);
             pnlSA_ShadowPrices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saShadow_Show = new Button { Text = "Display Shadow Prices", Left = 20, Top = 50, Width = 200, Height = 40 };
-            saShadow_Output = CreateCompactOutputList(20, 110, 520, 90);
+            saShadow_Output = CreateCompactOutputList(20, 110, 800, 160);
+            
+            // Connect the click event handler
+            saShadow_Show.Click += SaShadow_Show_Click;
+
             pnlSA_ShadowPrices.Controls.AddRange(new Control[] { saShadow_Show, saShadow_Output });
 
             // Duality - Fixed button spacing and consistent textbox layout
-            pnlSA_Duality = CreateSAGroup("Duality Analysis", 240);
+            pnlSA_Duality = CreateSAGroup("Duality Analysis", 320);
             pnlSA_Duality.Margin = new Padding(12, 0, 0, 16);
             pnlSA_Duality.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 
             saDual_Build = new Button { Text = "Build Dual", Left = 20, Top = 50, Width = 120, Height = 36 };
             saDual_Solve = new Button { Text = "Solve Dual", Left = 150, Top = 50, Width = 120, Height = 36 };
             saDual_Verify = new Button { Text = "Verify Duality", Left = 280, Top = 50, Width = 140, Height = 36 };
-            saDual_Output = CreateCompactOutputList(20, 110, 520, 90);
+            saDual_Output = CreateCompactOutputList(20, 110, 800, 160);
             pnlSA_Duality.Controls.AddRange(new Control[] { saDual_Build, saDual_Solve, saDual_Verify, saDual_Output });
 
             // Add to secondary layout
@@ -815,7 +826,7 @@ namespace LPR381_Assignment
                 Left = 410, Top = 48, Width = 130, Height = 36
             };
 
-            var outputList = CreateOutputList(20, 100, 490, 180);
+            var outputList = CreateOutputList(20, 100, 700, 180);
 
             return (combo, showRangeBtn, deltaUpDown, applyBtn, outputList);
         }
@@ -839,7 +850,7 @@ namespace LPR381_Assignment
                 Text = "Edit Column Coeffs…", Left = 320, Top = 48, Width = 180, Height = 36
             };
 
-            var outputList = CreateOutputList(20, 100, 540, 180);
+            var outputList = CreateOutputList(20, 100, 700, 180);
 
             return (combo, showRangeBtn, editBtn, outputList);
         }
@@ -1320,6 +1331,64 @@ namespace LPR381_Assignment
                     MessageBox.Show($"Error exporting results: {ex.Message}",
                                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        // Event handler for shadow price calculation
+        private void SaShadow_Show_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentModel == null)
+                {
+                    MessageBox.Show("Please load a model first before calculating shadow prices.", 
+                        "No Model Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Calculate shadow prices
+                var result = _shadowPriceCalculator.CalculateShadowPrices(_currentModel);
+
+                // Clear previous results
+                saShadow_Output.Items.Clear();
+
+                // Configure ListView for shadow price display
+                saShadow_Output.View = View.Details;
+                saShadow_Output.Columns.Clear();
+                saShadow_Output.Columns.Add("Constraint", 120);
+                saShadow_Output.Columns.Add("Shadow Price", 150);
+                saShadow_Output.Columns.Add("Status", 80);
+                saShadow_Output.Columns.Add("Interpretation", 700);
+
+                // Add shadow price results
+                foreach (var shadowPrice in result.ShadowPrices)
+                {
+                    var item = new ListViewItem(shadowPrice.ConstraintName);
+                    item.SubItems.Add(shadowPrice.Value.ToString("F3"));
+                    item.SubItems.Add(shadowPrice.IsActive ? "Active" : "Inactive");
+                    item.SubItems.Add(shadowPrice.Interpretation);
+                    saShadow_Output.Items.Add(item);
+                }
+
+                // Add summary information
+                var summaryItem = new ListViewItem("SUMMARY");
+                summaryItem.SubItems.Add($"Optimal: {result.OptimalValue:F2}");
+                summaryItem.SubItems.Add("Info");
+                summaryItem.SubItems.Add(result.Notes);
+                summaryItem.Font = new Font(saShadow_Output.Font, FontStyle.Bold);
+                saShadow_Output.Items.Add(summaryItem);
+
+                // Update status
+                sbStatus.Text = $"Shadow prices calculated for {result.ShadowPrices.Count} constraints.";
+
+                MessageBox.Show($"Shadow prices calculated successfully!\n\nFound {result.ShadowPrices.Count} constraints.\nOptimal value: {result.OptimalValue:F2}", 
+                    "Shadow Prices", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error calculating shadow prices: {ex.Message}", 
+                    "Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sbStatus.Text = "Shadow price calculation failed.";
             }
         }
 
