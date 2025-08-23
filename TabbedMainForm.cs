@@ -20,6 +20,7 @@ namespace LPR381_Assignment
         private LPModel? _currentModel = null;
         private readonly ModelParser _modelParser = new();
         private readonly ShadowPriceCalculator _shadowPriceCalculator = new();
+        private readonly DualModelGenerator _dualModelGenerator = new();
 
         // Menu & Status controls
         private MenuStrip mainMenu;
@@ -779,6 +780,10 @@ namespace LPR381_Assignment
             saDual_Solve = new Button { Text = "Solve Dual", Left = 150, Top = 50, Width = 120, Height = 36 };
             saDual_Verify = new Button { Text = "Verify Duality", Left = 280, Top = 50, Width = 140, Height = 36 };
             saDual_Output = CreateCompactOutputList(20, 110, 800, 160);
+            
+            // Connect the click event handlers
+            saDual_Build.Click += SaDual_Build_Click;
+            
             pnlSA_Duality.Controls.AddRange(new Control[] { saDual_Build, saDual_Solve, saDual_Verify, saDual_Output });
 
             // Add to secondary layout
@@ -1389,6 +1394,68 @@ namespace LPR381_Assignment
                 MessageBox.Show($"Error calculating shadow prices: {ex.Message}", 
                     "Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sbStatus.Text = "Shadow price calculation failed.";
+            }
+        }
+
+        // Event handler for dual model generation
+        private void SaDual_Build_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentModel == null)
+                {
+                    MessageBox.Show("Please load a model first before building the dual model.", 
+                        "No Model Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var result = _dualModelGenerator.GenerateDualModel(_currentModel);
+                saDual_Output.Items.Clear();
+                saDual_Output.View = View.Details;
+                saDual_Output.Columns.Clear();
+                saDual_Output.Columns.Add("Component", 120);
+                saDual_Output.Columns.Add("Details", 650);
+
+                var headerItem = new ListViewItem("DUAL MODEL");
+                headerItem.SubItems.Add($"Generated from primal ({_currentModel.Sense} -> {result.DualModel.Sense})");
+                headerItem.Font = new Font(saDual_Output.Font, FontStyle.Bold);
+                saDual_Output.Items.Add(headerItem);
+
+                var objItem = new ListViewItem("Objective");
+                objItem.SubItems.Add(result.DualModel.FormattedObjective);
+                saDual_Output.Items.Add(objItem);
+
+                foreach (var constraint in result.DualModel.Constraints)
+                {
+                    var constItem = new ListViewItem("Constraint");
+                    var coeffs = constraint.Coefficients.Where(kv => kv.Value != 0).Select(kv =>
+                        kv.Value == 1 ? kv.Key : $"{kv.Value}{kv.Key}");
+                    var relationStr = constraint.Relation switch
+                    {
+                        ConstraintRelation.LessThanEqual => "<=",
+                        ConstraintRelation.Equal => "=",
+                        ConstraintRelation.GreaterThanEqual => ">=",
+                        _ => "?"
+
+                    };
+                    var constraintText = $"{string.Join(" + ", coeffs)} {relationStr} {constraint.RHS}";
+                    constItem.SubItems.Add(constraintText);
+                    saDual_Output.Items.Add(constItem);
+                }
+
+                var varsItem = new ListViewItem("Variables");
+                var varRestrictions = result.DualModel.Variables.Values.OrderBy(v => v.Index).Select(v =>
+                    $"{v.Name} {(v.SignRestriction == SignRestriction.Positive ? ">= 0" : "urs")}");
+                varsItem.SubItems.Add(string.Join(", ", varRestrictions));
+                saDual_Output.Items.Add(varsItem);
+
+                sbStatus.Text = "Dual model built successfully.";
+                MessageBox.Show($"Dual model generated!\nDual: {result.DualModel.Variables.Count} vars, {result.DualModel.Constraints.Count} constraints", 
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -80,3 +80,4 @@ C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\refint\LPR3
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\LPR381-Assignment.pdb
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\LPR381-Assignment.genruntimeconfig.cache
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\ref\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\LPR381_Assignment.DualEventHandler.resources
