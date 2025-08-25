@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using LPR381_Assignment.Models;
 using LPR381_Assignment.Services;
 using LPR381_Assignment.Services.Analysis;
+using LPR381_Assignment.Services.Algorithms; // Add this for SimplexEngine
 using LPR381_Assignment.UI.Controls;
 using LPR381_Assignment.UI.Helpers;
 using LPR381_Assignment.UI.Themes;
@@ -71,8 +72,6 @@ namespace LPR381_Assignment
         // Tab: Iterations
         private TabPage tabIterations;
         private ListView lvIterations;
-        private Button btnExpandAll;
-        private Button btnCollapseAll;
 
         // Tab: Results
         private TabPage tabResults;
@@ -120,7 +119,7 @@ namespace LPR381_Assignment
         private StyledGroupPanel pnlSA_ShadowPrices;
         private Button saShadow_Show;
         private ListView saShadow_Output;
-        
+
         private StyledGroupPanel pnlSA_Duality;
         private Button saDual_Build;
         private Button saDual_Solve;
@@ -148,13 +147,13 @@ namespace LPR381_Assignment
         public TabbedMainForm()
         {
             Text = "LP/IP Solver - LPR381 Assignment";
-            
+
             // Set full screen and disable resizing
             WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = true; // Keep minimize button for user convenience
-            
+
             // Remove fixed size constraints since we're using full screen
             StartPosition = FormStartPosition.CenterScreen;
 
@@ -163,6 +162,9 @@ namespace LPR381_Assignment
             UpdateStyles();
 
             InitializeComponents();
+            
+            // Connect the enhanced solve handler after UI is built
+            ConnectEnhancedSolveHandler();
         }
 
         // Custom window creation params for double-buffering
@@ -307,7 +309,7 @@ namespace LPR381_Assignment
             btnLoadModelFile = new Button { Text = "Load Model From File", Width = 200, Height = 40, Top = 20 };
             btnSaveModelFile = new Button { Text = "Save Model To File", Width = 180, Height = 40, Top = 20 };
             btnValidateInput = new Button { Text = "Validate Input", Width = 160, Height = 40, Top = 20 };
-            
+
             // Wire up the click events to our handler methods
             btnLoadModelFile.Click += BtnLoadModelFile_Click;
             btnSaveModelFile.Click += BtnSaveModelFile_Click;
@@ -322,7 +324,7 @@ namespace LPR381_Assignment
                 btnSaveModelFile.Left = startX + btnLoadModelFile.Width + 20;
                 btnValidateInput.Left = btnSaveModelFile.Left + btnSaveModelFile.Width + 20;
             }
-            
+
             // Hook up the centering to happen whenever the panel resizes
             topPanel.Resize += (s, e) => CenterTopButtons();
             topPanel.Controls.AddRange(new Control[] { btnLoadModelFile, btnSaveModelFile, btnValidateInput });
@@ -492,7 +494,8 @@ namespace LPR381_Assignment
             ControlStyler.StyleCheckBox(chkGeneralInteger);
             ControlStyler.StyleButton(btnSolve, primary: true);
 
-            btnSolve.Click += BtnSolve_Click;
+            // DON'T wire up the original handler here - it will be replaced by the enhanced one
+            // btnSolve.Click += BtnSolve_Click;
 
             tabAlgorithm.Controls.Add(mainPanel);
         }
@@ -547,32 +550,25 @@ namespace LPR381_Assignment
 
             var mainPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(20), BackColor = Color.Transparent };
 
-            var bottomPanel = new Panel { Dock = DockStyle.Bottom, Height = 80, Padding = new Padding(0, 10, 0, 0) };
-            btnExpandAll = new Button { Text = "Expand All Steps", Width = 160, Height = 40, Left = 0, Top = 20 };
-            btnCollapseAll = new Button { Text = "Collapse All Steps", Width = 160, Height = 40, Left = 180, Top = 20 };
-            btnExpandAll.Click += (s, e) => ExpandCollapseAll(true);
-            btnCollapseAll.Click += (s, e) => ExpandCollapseAll(false);
-            bottomPanel.Controls.Add(btnExpandAll);
-            bottomPanel.Controls.Add(btnCollapseAll);
-
             lvIterations = new ListView
             {
                 Dock = DockStyle.Fill,
                 View = View.Details,
                 FullRowSelect = true,
                 GridLines = true,
-                Margin = new Padding(0, 0, 0, 10)
+                Margin = new Padding(0)
             };
-            lvIterations.Columns.Add("Step", 80);
-            lvIterations.Columns.Add("Phase/Node", 160);
-            lvIterations.Columns.Add("Description", 720);
+            
+            // Set up columns for the expanded format by default with wider columns
+            lvIterations.Columns.Add("Step", 120);
+            lvIterations.Columns.Add("Phase", 120);
+            lvIterations.Columns.Add("Description", 300);
+            lvIterations.Columns.Add("Entering", 120);
+            lvIterations.Columns.Add("Leaving", 120);
+            lvIterations.Columns.Add("Objective", 120);
+            lvIterations.Columns.Add("Time (ms)", 120);
 
-            mainPanel.Controls.Add(bottomPanel);
             mainPanel.Controls.Add(lvIterations);
-
-            ControlStyler.StyleButton(btnExpandAll);
-            ControlStyler.StyleButton(btnCollapseAll);
-
             tabIterations.Controls.Add(mainPanel);
         }
 
@@ -645,7 +641,7 @@ namespace LPR381_Assignment
             // Configure column styles - equal width with gap
             mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            
+
             // Configure row styles - auto size
             mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -764,7 +760,7 @@ namespace LPR381_Assignment
             pnlSA_ShadowPrices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saShadow_Show = new Button { Text = "Display Shadow Prices", Left = 20, Top = 50, Width = 200, Height = 40 };
             saShadow_Output = CreateCompactOutputList(20, 110, 800, 160);
-            
+
             // Connect the click event handler
             saShadow_Show.Click += SaShadow_Show_Click;
 
@@ -779,10 +775,10 @@ namespace LPR381_Assignment
             saDual_Solve = new Button { Text = "Solve Dual", Left = 150, Top = 50, Width = 120, Height = 36 };
             saDual_Verify = new Button { Text = "Verify Duality", Left = 280, Top = 50, Width = 140, Height = 36 };
             saDual_Output = CreateCompactOutputList(20, 110, 800, 160);
-            
+
             // Connect the click event handlers
             saDual_Build.Click += SaDual_Build_Click;
-            
+
             pnlSA_Duality.Controls.AddRange(new Control[] { saDual_Build, saDual_Solve, saDual_Verify, saDual_Output });
 
             // Add to secondary layout
@@ -901,32 +897,32 @@ namespace LPR381_Assignment
         private void StyleSensitivityControls()
         {
             // Style buttons with primary (blue) styling for better visibility
-            foreach (var btn in new[] { 
-                saNB_ShowRange, saNB_Apply, saB_ShowRange, saB_Apply, 
-                saRHS_ShowRange, saRHS_Apply, saCol_ShowRange, saCol_EditCoeffs, 
-                saAddAct_Add, saAddCon_Add, saShadow_Show, 
-                saDual_Build, saDual_Solve, saDual_Verify 
+            foreach (var btn in new[] {
+                saNB_ShowRange, saNB_Apply, saB_ShowRange, saB_Apply,
+                saRHS_ShowRange, saRHS_Apply, saCol_ShowRange, saCol_EditCoeffs,
+                saAddAct_Add, saAddCon_Add, saShadow_Show,
+                saDual_Build, saDual_Solve, saDual_Verify
             })
             {
                 ControlStyler.StyleButton(btn, primary: true);
             }
-            
+
             // Style combo boxes
             foreach (var combo in new[] { saNB_VarSelect, saB_VarSelect, saRHS_ConSelect, saCol_VarSelect })
             {
                 ControlStyler.StyleCombo(combo);
             }
-            
+
             // Style numeric up/down controls
             foreach (var nud in new[] { saNB_ApplyDelta, saB_ApplyDelta, saRHS_ApplyDelta })
             {
                 ControlStyler.StyleNumericUpDown(nud);
             }
-            
+
             // Style output lists
-            foreach (var lv in new[] { 
-                saNB_Output, saB_Output, saRHS_Output, saCol_Output, 
-                saAddAct_Output, saAddCon_Output, saShadow_Output, saDual_Output 
+            foreach (var lv in new[] {
+                saNB_Output, saB_Output, saRHS_Output, saCol_Output,
+                saAddAct_Output, saAddCon_Output, saShadow_Output, saDual_Output
             })
             {
                 ControlStyler.StyleListView(lv);
@@ -1062,57 +1058,6 @@ namespace LPR381_Assignment
             return sb.ToString().TrimEnd();
         }
 
-        // Expands or collapses all iteration steps (placeholder)
-        private void ExpandCollapseAll(bool expand)
-        {
-            MessageBox.Show(expand ? "Expanded all iteration steps." : "Collapsed all iteration steps.",
-                            "Iterations", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        // ---------- Styled Group Panel ----------
-        internal class StyledGroupPanel : Panel
-        {
-            public string Title { get; set; } = "";
-            public Font TitleFont { get; set; } = SystemFonts.DefaultFont;
-            public Color TitleColor { get; set; } = Color.Black;
-            public Color BorderColor { get; set; } = Color.Gray;
-            public Color BackgroundFill { get; set; } = Color.White;
-            public int CornerRadius { get; set; } = 8;
-
-            protected override void OnPaint(PaintEventArgs e)
-            {
-                base.OnPaint(e);
-
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-                var titleSize = TextRenderer.MeasureText(Title, TitleFont);
-                int titlePadX = 20;
-                int titlePadY = 8;
-
-                int borderTop = titlePadY + (titleSize.Height / 2);
-                var bodyRect = new Rectangle(1, borderTop, Width - 2, Height - borderTop - 1);
-
-                using (var path = GraphicsHelper.CreateRoundRectPath(bodyRect, CornerRadius))
-                {
-                    using (var fill = new SolidBrush(BackgroundFill))
-                        e.Graphics.FillPath(fill, path);
-
-                    using (var pen = new Pen(BorderColor, 1.5f))
-                        e.Graphics.DrawPath(pen, path);
-                }
-
-                var titleBgRect = new Rectangle(titlePadX - 4, titlePadY - 2, titleSize.Width + 8, titleSize.Height + 4);
-                using (var bg = new SolidBrush(Parent?.BackColor ?? BackgroundFill))
-                    e.Graphics.FillRectangle(bg, titleBgRect);
-
-                TextRenderer.DrawText(e.Graphics, Title, TitleFont,
-                    new Point(titlePadX, titlePadY), TitleColor,
-                    TextFormatFlags.Left | TextFormatFlags.Top | TextFormatFlags.NoPadding);
-            }
-        }
-
-        // -------------------- Event Handlers (bottom) --------------------
-
         // Handles loading a model file
         private void BtnLoadModelFile_Click(object sender, EventArgs e)
         {
@@ -1179,7 +1124,7 @@ namespace LPR381_Assignment
             {
                 var signs = new List<string>();
                 var coeffs = new List<string>();
-                
+
                 // For each variable, figure out its coefficient in this constraint
                 foreach (var variable in _currentModel.Variables.Values.OrderBy(v => v.Index))
                 {
@@ -1187,7 +1132,7 @@ namespace LPR381_Assignment
                     signs.Add(coeff >= 0 ? "+" : "-");
                     coeffs.Add(Math.Abs(coeff).ToString());
                 }
-                
+
                 // Convert the constraint relation to display format
                 string relation = constraint.Relation switch
                 {
@@ -1231,7 +1176,7 @@ namespace LPR381_Assignment
             // Now that we have a valid model, enable the buttons that need it
             btnValidateInput.Enabled = true;
             btnSolve.Enabled = true;
-            
+
             // Update sensitivity analysis dropdowns
             UpdateVariableDropdowns();
         }
@@ -1290,29 +1235,8 @@ namespace LPR381_Assignment
         // Handles solving the problem
         private void BtnSolve_Click(object sender, EventArgs e)
         {
-            try
-            {
-                rtbResultsSummary.Clear();
-                rtbResultsSummary.AppendText("=== LP/IP SOLVER RESULTS ===\n\n");
-                rtbResultsSummary.AppendText($"Problem Type: {cmbProblemType.SelectedItem}\n");
-                rtbResultsSummary.AppendText($"Objective Sense: {cmbObjectiveSense.SelectedItem}\n");
-                rtbResultsSummary.AppendText($"Algorithm: {GetSelectedAlgorithmName()}\n");
-                rtbResultsSummary.AppendText($"Binary Variables: {(chkBinary.Checked ? "Yes" : "No")}\n");
-                rtbResultsSummary.AppendText($"Integer Variables: {(chkGeneralInteger.Checked ? "Yes" : "No")}\n\n");
-                rtbResultsSummary.AppendText("STATUS: Ready to solve (GUI scaffold)\n");
-                rtbResultsSummary.AppendText("OPTIMAL VALUE: [To be calculated]\n");
-                rtbResultsSummary.AppendText("SOLUTION VECTOR: [To be calculated]\n\n");
-                rtbResultsSummary.AppendText("Note: Algorithm implementation in progress...\n");
-
-                sbStatus.Text = "Solve started (placeholder).";
-                sbIter.Text = "Iter: 0";
-                tabMain.SelectedTab = tabResults;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during solving: {ex.Message}",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Redirect to the enhanced solve handler
+            BtnSolve_Click_Enhanced(sender, e);
         }
 
         // Handles exporting results
@@ -1348,7 +1272,7 @@ namespace LPR381_Assignment
             {
                 if (_currentModel == null)
                 {
-                    MessageBox.Show("Please load a model first before calculating shadow prices.", 
+                    MessageBox.Show("Please load a model first before calculating shadow prices.",
                         "No Model Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1388,12 +1312,12 @@ namespace LPR381_Assignment
                 // Update status
                 sbStatus.Text = $"Shadow prices calculated for {result.ShadowPrices.Count} constraints.";
 
-                MessageBox.Show($"Shadow prices calculated successfully!\n\nFound {result.ShadowPrices.Count} constraints.\nOptimal value: {result.OptimalValue:F2}", 
+                MessageBox.Show($"Shadow prices calculated successfully!\n\nFound {result.ShadowPrices.Count} constraints.\nOptimal value: {result.OptimalValue:F2}",
                     "Shadow Prices", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error calculating shadow prices: {ex.Message}", 
+                MessageBox.Show($"Error calculating shadow prices: {ex.Message}",
                     "Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sbStatus.Text = "Shadow price calculation failed.";
             }
@@ -1406,7 +1330,7 @@ namespace LPR381_Assignment
             {
                 if (_currentModel == null)
                 {
-                    MessageBox.Show("Please load a model first before building the dual model.", 
+                    MessageBox.Show("Please load a model first before building the dual model.",
                         "No Model Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1452,7 +1376,7 @@ namespace LPR381_Assignment
                 saDual_Output.Items.Add(varsItem);
 
                 sbStatus.Text = "Dual model built successfully.";
-                MessageBox.Show($"Dual model generated!\nDual: {result.DualModel.Variables.Count} vars, {result.DualModel.Constraints.Count} constraints", 
+                MessageBox.Show($"Dual model generated!\nDual: {result.DualModel.Variables.Count} vars, {result.DualModel.Constraints.Count} constraints",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -1475,6 +1399,12 @@ namespace LPR381_Assignment
                 BackgroundFill = AppTheme.Card,
                 CornerRadius = 12
             };
+        }
+
+        // Package up the solving trigger to be used in menu item
+        private void TriggerSolve()
+        {
+            BtnSolve_Click_Enhanced(this, EventArgs.Empty);
         }
     }
 

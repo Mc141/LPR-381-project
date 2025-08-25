@@ -23,6 +23,7 @@ namespace LPR381_Assignment
             base.OnLoad(e);
             ConnectRangeAnalysisEventHandlers();
             ConnectSensitivityEventHandlers(); // Add this missing call
+            ConnectEnhancedSolveHandler(); // Connect the enhanced solve functionality
         }
 
         // Event handler for non-basic variable range analysis

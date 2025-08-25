@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\button_linkage_status.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:button_linkage_status.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\dualityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\dualityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -67,8 +63,96 @@
       "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:dialog_sizing_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\model_update_integration_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:model_update_integration_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\simplexintegrationeventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:simplexintegrationeventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\iterations_column_width_expansion_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:iterations_column_width_expansion_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\algorithms\\revisedsimplexsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\algorithms\\revisedsimplexsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\simplexiteration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\simplexiteration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\revised_simplex_product_form_implementation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:revised_simplex_product_form_implementation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\iteration_update_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:iteration_update_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\dialog_reopening_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:dialog_reopening_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\simplextableau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\simplextableau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\tableau_verification_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:tableau_verification_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\iterations_display_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:iterations_display_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\revised_simplex_objective_sign_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:revised_simplex_objective_sign_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\revised_simplex_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:revised_simplex_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\algorithms\\canonicalformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\algorithms\\canonicalformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\algorithms\\simplexsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\algorithms\\simplexsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\simplex_debugging_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:simplex_debugging_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\simplex_calculation_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:simplex_calculation_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\solve_button_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:solve_button_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\simplex_connection_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:simplex_connection_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\solverresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\solverresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\algorithms\\ialgorithmsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\algorithms\\ialgorithmsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\algorithms\\simplexengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\algorithms\\simplexengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\simplex_test_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:simplex_test_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\core_simplex_implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:core_simplex_implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,11 +162,219 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 32,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CORE_SIMPLEX_IMPLEMENTATION_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\CORE_SIMPLEX_IMPLEMENTATION_SUMMARY.md",
+              "RelativeDocumentMoniker": "CORE_SIMPLEX_IMPLEMENTATION_SUMMARY.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\CORE_SIMPLEX_IMPLEMENTATION_SUMMARY.md",
+              "RelativeToolTip": "CORE_SIMPLEX_IMPLEMENTATION_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:12.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "simplex_test_model.txt",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\simplex_test_model.txt",
+              "RelativeDocumentMoniker": "simplex_test_model.txt",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\simplex_test_model.txt",
+              "RelativeToolTip": "simplex_test_model.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-25T04:54:12.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "SimplexEngine.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\SimplexEngine.cs",
+              "RelativeDocumentMoniker": "Services\\Algorithms\\SimplexEngine.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\SimplexEngine.cs",
+              "RelativeToolTip": "Services\\Algorithms\\SimplexEngine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:12.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IAlgorithmSolver.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\IAlgorithmSolver.cs",
+              "RelativeDocumentMoniker": "Services\\Algorithms\\IAlgorithmSolver.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\IAlgorithmSolver.cs",
+              "RelativeToolTip": "Services\\Algorithms\\IAlgorithmSolver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:12.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "SolverResult.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SolverResult.cs",
+              "RelativeDocumentMoniker": "Models\\SolverResult.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SolverResult.cs",
+              "RelativeToolTip": "Models\\SolverResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:12.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "SIMPLEX_CONNECTION_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_CONNECTION_REPORT.md",
+              "RelativeDocumentMoniker": "SIMPLEX_CONNECTION_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_CONNECTION_REPORT.md",
+              "RelativeToolTip": "SIMPLEX_CONNECTION_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:12.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "SOLVE_BUTTON_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SOLVE_BUTTON_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "SOLVE_BUTTON_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SOLVE_BUTTON_FIX_REPORT.md",
+              "RelativeToolTip": "SOLVE_BUTTON_FIX_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:12.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SIMPLEX_CALCULATION_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_CALCULATION_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "SIMPLEX_CALCULATION_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_CALCULATION_FIX_REPORT.md",
+              "RelativeToolTip": "SIMPLEX_CALCULATION_FIX_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:12.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "SIMPLEX_DEBUGGING_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_DEBUGGING_REPORT.md",
+              "RelativeDocumentMoniker": "SIMPLEX_DEBUGGING_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SIMPLEX_DEBUGGING_REPORT.md",
+              "RelativeToolTip": "SIMPLEX_DEBUGGING_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:11.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SimplexSolver.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\SimplexSolver.cs",
+              "RelativeDocumentMoniker": "Services\\Algorithms\\SimplexSolver.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\SimplexSolver.cs",
+              "RelativeToolTip": "Services\\Algorithms\\SimplexSolver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:11.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CanonicalFormGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\CanonicalFormGenerator.cs",
+              "RelativeDocumentMoniker": "Services\\Algorithms\\CanonicalFormGenerator.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\CanonicalFormGenerator.cs",
+              "RelativeToolTip": "Services\\Algorithms\\CanonicalFormGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:11.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "REVISED_SIMPLEX_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "REVISED_SIMPLEX_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_FIX_REPORT.md",
+              "RelativeToolTip": "REVISED_SIMPLEX_FIX_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:11.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "REVISED_SIMPLEX_OBJECTIVE_SIGN_FIX.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_OBJECTIVE_SIGN_FIX.md",
+              "RelativeDocumentMoniker": "REVISED_SIMPLEX_OBJECTIVE_SIGN_FIX.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_OBJECTIVE_SIGN_FIX.md",
+              "RelativeToolTip": "REVISED_SIMPLEX_OBJECTIVE_SIGN_FIX.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:11.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ITERATIONS_DISPLAY_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATIONS_DISPLAY_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "ITERATIONS_DISPLAY_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATIONS_DISPLAY_FIX_REPORT.md",
+              "RelativeToolTip": "ITERATIONS_DISPLAY_FIX_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:11.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TABLEAU_VERIFICATION_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TABLEAU_VERIFICATION_REPORT.md",
+              "RelativeDocumentMoniker": "TABLEAU_VERIFICATION_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TABLEAU_VERIFICATION_REPORT.md",
+              "RelativeToolTip": "TABLEAU_VERIFICATION_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:54:11.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SimplexTableau.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SimplexTableau.cs",
+              "RelativeDocumentMoniker": "Models\\SimplexTableau.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SimplexTableau.cs",
+              "RelativeToolTip": "Models\\SimplexTableau.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:54:11.569Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -90,33 +382,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BUTTON_LINKAGE_STATUS.md",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\BUTTON_LINKAGE_STATUS.md",
-              "RelativeDocumentMoniker": "BUTTON_LINKAGE_STATUS.md",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\BUTTON_LINKAGE_STATUS.md",
-              "RelativeToolTip": "BUTTON_LINKAGE_STATUS.md",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAAAIIAAAA/AAAAAAAAAA==",
+              "DocumentIndex": 21,
+              "Title": "DIALOG_REOPENING_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\DIALOG_REOPENING_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "DIALOG_REOPENING_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\DIALOG_REOPENING_FIX_REPORT.md",
+              "RelativeToolTip": "DIALOG_REOPENING_FIX_REPORT.md",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEkBAACJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-24T23:18:22.574Z",
+              "WhenOpened": "2025-08-25T04:53:04.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ITERATION_UPDATE_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATION_UPDATE_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "ITERATION_UPDATE_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATION_UPDATE_FIX_REPORT.md",
+              "RelativeToolTip": "ITERATION_UPDATE_FIX_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOwAAACqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:42:51.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "REVISED_SIMPLEX_PRODUCT_FORM_IMPLEMENTATION.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_PRODUCT_FORM_IMPLEMENTATION.md",
+              "RelativeDocumentMoniker": "REVISED_SIMPLEX_PRODUCT_FORM_IMPLEMENTATION.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\REVISED_SIMPLEX_PRODUCT_FORM_IMPLEMENTATION.md",
+              "RelativeToolTip": "REVISED_SIMPLEX_PRODUCT_FORM_IMPLEMENTATION.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMAAAD+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T04:26:31.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SimplexIteration.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SimplexIteration.cs",
+              "RelativeDocumentMoniker": "Models\\SimplexIteration.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\SimplexIteration.cs",
+              "RelativeToolTip": "Models\\SimplexIteration.cs",
+              "ViewState": "AgIAABUBAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:24:51.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RevisedSimplexSolver.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\RevisedSimplexSolver.cs",
+              "RelativeDocumentMoniker": "Services\\Algorithms\\RevisedSimplexSolver.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Algorithms\\RevisedSimplexSolver.cs",
+              "RelativeToolTip": "Services\\Algorithms\\RevisedSimplexSolver.cs",
+              "ViewState": "AgIAADMDAAAAAAAAACBmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T04:23:51.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "MODEL_UPDATE_INTEGRATION_REPORT.md",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\MODEL_UPDATE_INTEGRATION_REPORT.md",
-              "RelativeDocumentMoniker": "MODEL_UPDATE_INTEGRATION_REPORT.md",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\MODEL_UPDATE_INTEGRATION_REPORT.md",
-              "RelativeToolTip": "MODEL_UPDATE_INTEGRATION_REPORT.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAABNAAAAAAAAAA==",
+              "Title": "ITERATIONS_COLUMN_WIDTH_EXPANSION_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATIONS_COLUMN_WIDTH_EXPANSION_REPORT.md",
+              "RelativeDocumentMoniker": "ITERATIONS_COLUMN_WIDTH_EXPANSION_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\ITERATIONS_COLUMN_WIDTH_EXPANSION_REPORT.md",
+              "RelativeToolTip": "ITERATIONS_COLUMN_WIDTH_EXPANSION_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJkAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-25T00:13:02.725Z",
+              "WhenOpened": "2025-08-25T03:51:51.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
+              "Title": "SimplexIntegrationEventHandlers.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SimplexIntegrationEventHandlers.cs",
+              "RelativeDocumentMoniker": "SimplexIntegrationEventHandlers.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SimplexIntegrationEventHandlers.cs",
+              "RelativeToolTip": "SimplexIntegrationEventHandlers.cs",
+              "ViewState": "AgIAACIDAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T03:49:13.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "DIALOG_SIZING_FIX_REPORT.md",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\DIALOG_SIZING_FIX_REPORT.md",
               "RelativeDocumentMoniker": "DIALOG_SIZING_FIX_REPORT.md",
@@ -124,25 +481,24 @@
               "RelativeToolTip": "DIALOG_SIZING_FIX_REPORT.md",
               "ViewState": "AgIAAD0AAAAAAAAAAIBJwD8AAAB0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-24T23:32:26.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:32:26.954Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "RangeAnalysisEventHandlers.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\RangeAnalysisEventHandlers.cs",
               "RelativeDocumentMoniker": "RangeAnalysisEventHandlers.cs",
               "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\RangeAnalysisEventHandlers.cs",
               "RelativeToolTip": "RangeAnalysisEventHandlers.cs",
-              "ViewState": "AgIAAL4CAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMICAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T23:17:24.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "test_model.txt",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\test_model.txt",
               "RelativeDocumentMoniker": "test_model.txt",
@@ -150,12 +506,11 @@
               "RelativeToolTip": "test_model.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-24T23:10:44.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:10:44.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "DualModel.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualModel.cs",
               "RelativeDocumentMoniker": "Models\\DualModel.cs",
@@ -163,12 +518,11 @@
               "RelativeToolTip": "Models\\DualModel.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAMBUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:08:32.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:08:32.891Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "SensitivityAnalyzer.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityAnalyzer.cs",
               "RelativeDocumentMoniker": "Services\\Analysis\\SensitivityAnalyzer.cs",
@@ -176,38 +530,37 @@
               "RelativeToolTip": "Services\\Analysis\\SensitivityAnalyzer.cs",
               "ViewState": "AgIAAB0CAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:07:25.983Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:07:25.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "SensitivityEventHandlers.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SensitivityEventHandlers.cs",
               "RelativeDocumentMoniker": "SensitivityEventHandlers.cs",
               "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SensitivityEventHandlers.cs",
               "RelativeToolTip": "SensitivityEventHandlers.cs",
-              "ViewState": "AgIAAB4CAAAAAAAAAABRwCECAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFoCAAAAAAAAAEBVwF4CAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T23:07:07.979Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "TabbedMainForm.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
               "RelativeDocumentMoniker": "TabbedMainForm.cs",
               "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
               "RelativeToolTip": "TabbedMainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJMFAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T23:03:45.906Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DualityAnalyzer.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\DualityAnalyzer.cs",
               "RelativeDocumentMoniker": "Services\\Analysis\\DualityAnalyzer.cs",
@@ -215,12 +568,11 @@
               "RelativeToolTip": "Services\\Analysis\\DualityAnalyzer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAM8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:00:03.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:00:03.88Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "SENSITIVITY_TESTING_GUIDE.md",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SENSITIVITY_TESTING_GUIDE.md",
               "RelativeDocumentMoniker": "SENSITIVITY_TESTING_GUIDE.md",
@@ -228,12 +580,11 @@
               "RelativeToolTip": "SENSITIVITY_TESTING_GUIDE.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-24T23:11:21.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:11:21.002Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "IMPLEMENTATION_SUMMARY.md",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\IMPLEMENTATION_SUMMARY.md",
               "RelativeDocumentMoniker": "IMPLEMENTATION_SUMMARY.md",
@@ -241,12 +592,11 @@
               "RelativeToolTip": "IMPLEMENTATION_SUMMARY.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-24T23:12:01.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:12:01.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "AddActivityDialog.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\UI\\Dialogs\\AddActivityDialog.cs",
               "RelativeDocumentMoniker": "UI\\Dialogs\\AddActivityDialog.cs",
@@ -254,12 +604,11 @@
               "RelativeToolTip": "UI\\Dialogs\\AddActivityDialog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:02:17.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:02:17.633Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "ModelChange.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ModelChange.cs",
               "RelativeDocumentMoniker": "Models\\ModelChange.cs",
@@ -267,12 +616,11 @@
               "RelativeToolTip": "Models\\ModelChange.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:01:40.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:01:40.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ComprehensiveSensitivityResult.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ComprehensiveSensitivityResult.cs",
               "RelativeDocumentMoniker": "Models\\ComprehensiveSensitivityResult.cs",
@@ -280,12 +628,11 @@
               "RelativeToolTip": "Models\\ComprehensiveSensitivityResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:01:24.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:01:24.879Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "DualityVerificationResult.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualityVerificationResult.cs",
               "RelativeDocumentMoniker": "Models\\DualityVerificationResult.cs",
@@ -293,12 +640,11 @@
               "RelativeToolTip": "Models\\DualityVerificationResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:01:06.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:01:06.627Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SensitivityEngine.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityEngine.cs",
               "RelativeDocumentMoniker": "Services\\Analysis\\SensitivityEngine.cs",
@@ -306,8 +652,7 @@
               "RelativeToolTip": "Services\\Analysis\\SensitivityEngine.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0BAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T23:00:44.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-24T23:00:44.775Z"
             }
           ]
         }
