@@ -60,5 +60,8 @@ namespace LPR381_Assignment.Models
         public string FormattedDualModel { get; set; } = string.Empty;
         public string ComparisonSummary { get; set; } = string.Empty;
         public bool IsValidTransformation { get; set; } = true;
+        public bool IsSuccessful { get; set; } = true;  // Add missing property
+        
+        public string Summary => $"Dual Generation: {(IsSuccessful ? "Success" : "Failed")} - {Status}";
     }
 }

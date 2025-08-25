@@ -3,59 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\rangeanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\rangeanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\button_linkage_status.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:button_linkage_status.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\dualmodelgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\dualmodelgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\dualityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\dualityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\rangeanalysiseventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:rangeanalysiseventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\sensitivityengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\sensitivityengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\dualityverificationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\dualityverificationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\comprehensivesensitivityresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\comprehensivesensitivityresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\modelchange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\modelchange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\ui\\dialogs\\addactivitydialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\dialogs\\addactivitydialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:tabbedmainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\sensitivityeventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:sensitivityeventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\sensitivityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\sensitivityanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\dualmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\dualmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\rangeanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\rangeanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\test_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:test_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\sensitivity_testing_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:sensitivity_testing_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\ui\\helpers\\controlstyler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:ui\\helpers\\controlstyler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\models\\shadowprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:models\\shadowprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\rangeanalysiseventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:rangeanalysiseventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\services\\analysis\\shadowpricecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:services\\analysis\\shadowpricecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\dialog_sizing_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:dialog_sizing_fix_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\demo_shadow_price.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:demo_shadow_price.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\demo_dual_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:demo_dual_model.txt||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\demo_mixed_variables.txt||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:demo_mixed_variables.txt||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|c:\\users\\mc\\desktop\\code\\c#\\lpr-381-project\\model_update_integration_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{DC0C7932-B9F9-417D-8ED4-4FDAAF108DCD}|LPR381-Assignment.csproj|solutionrelative:model_update_integration_report.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -65,24 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TabbedMainForm.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
-              "RelativeDocumentMoniker": "TabbedMainForm.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
-              "RelativeToolTip": "TabbedMainForm.cs",
-              "ViewState": "AgIAAD0FAAAAAAAAAAAIwF0FAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T23:38:11.995Z",
-              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -90,160 +90,224 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "BUTTON_LINKAGE_STATUS.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\BUTTON_LINKAGE_STATUS.md",
+              "RelativeDocumentMoniker": "BUTTON_LINKAGE_STATUS.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\BUTTON_LINKAGE_STATUS.md",
+              "RelativeToolTip": "BUTTON_LINKAGE_STATUS.md",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAAAIIAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-24T23:18:22.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MODEL_UPDATE_INTEGRATION_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\MODEL_UPDATE_INTEGRATION_REPORT.md",
+              "RelativeDocumentMoniker": "MODEL_UPDATE_INTEGRATION_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\MODEL_UPDATE_INTEGRATION_REPORT.md",
+              "RelativeToolTip": "MODEL_UPDATE_INTEGRATION_REPORT.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-25T00:13:02.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DIALOG_SIZING_FIX_REPORT.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\DIALOG_SIZING_FIX_REPORT.md",
+              "RelativeDocumentMoniker": "DIALOG_SIZING_FIX_REPORT.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\DIALOG_SIZING_FIX_REPORT.md",
+              "RelativeToolTip": "DIALOG_SIZING_FIX_REPORT.md",
+              "ViewState": "AgIAAD0AAAAAAAAAAIBJwD8AAAB0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-24T23:32:26.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "RangeAnalysisEventHandlers.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\RangeAnalysisEventHandlers.cs",
               "RelativeDocumentMoniker": "RangeAnalysisEventHandlers.cs",
               "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\RangeAnalysisEventHandlers.cs",
               "RelativeToolTip": "RangeAnalysisEventHandlers.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAgwKIAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAL4CAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T05:29:16.545Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RangeAnalyzer.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\RangeAnalyzer.cs",
-              "RelativeDocumentMoniker": "Services\\Analysis\\RangeAnalyzer.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\RangeAnalyzer.cs",
-              "RelativeToolTip": "Services\\Analysis\\RangeAnalyzer.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAcwPIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T05:23:18.265Z",
+              "WhenOpened": "2025-08-24T23:17:24.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RangeAnalysis.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\RangeAnalysis.cs",
-              "RelativeDocumentMoniker": "Models\\RangeAnalysis.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\RangeAnalysis.cs",
-              "RelativeToolTip": "Models\\RangeAnalysis.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAADwv0QAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T05:22:43.273Z"
+              "DocumentIndex": 11,
+              "Title": "test_model.txt",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\test_model.txt",
+              "RelativeDocumentMoniker": "test_model.txt",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\test_model.txt",
+              "RelativeToolTip": "test_model.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-24T23:10:44.363Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DualModelGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\DualModelGenerator.cs",
-              "RelativeDocumentMoniker": "Services\\Analysis\\DualModelGenerator.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\DualModelGenerator.cs",
-              "RelativeToolTip": "Services\\Analysis\\DualModelGenerator.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAuwAcBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T00:50:07.178Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAHMNAAAAAAAAAAAQwH4NAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-08-23T06:36:14.032Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T00:17:38.36Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "DualModel.cs",
               "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualModel.cs",
               "RelativeDocumentMoniker": "Models\\DualModel.cs",
               "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualModel.cs",
               "RelativeToolTip": "Models\\DualModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAMBUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T00:49:22.818Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "demo_mixed_variables.txt",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_mixed_variables.txt",
-              "RelativeDocumentMoniker": "demo_mixed_variables.txt",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_mixed_variables.txt",
-              "RelativeToolTip": "demo_mixed_variables.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-23T06:22:20.731Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "demo_dual_model.txt",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_dual_model.txt",
-              "RelativeDocumentMoniker": "demo_dual_model.txt",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_dual_model.txt",
-              "RelativeToolTip": "demo_dual_model.txt",
-              "ViewState": "AgIAAAIAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-23T01:12:43.225Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ControlStyler.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\UI\\Helpers\\ControlStyler.cs",
-              "RelativeDocumentMoniker": "UI\\Helpers\\ControlStyler.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\UI\\Helpers\\ControlStyler.cs",
-              "RelativeToolTip": "UI\\Helpers\\ControlStyler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T23:41:52.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "demo_shadow_price.txt",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_shadow_price.txt",
-              "RelativeDocumentMoniker": "demo_shadow_price.txt",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\demo_shadow_price.txt",
-              "RelativeToolTip": "demo_shadow_price.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-22T23:41:52.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ShadowPriceCalculator.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\ShadowPriceCalculator.cs",
-              "RelativeDocumentMoniker": "Services\\Analysis\\ShadowPriceCalculator.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\ShadowPriceCalculator.cs",
-              "RelativeToolTip": "Services\\Analysis\\ShadowPriceCalculator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T23:41:52.834Z"
+              "WhenOpened": "2025-08-24T23:08:32.891Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ShadowPrice.cs",
-              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ShadowPrice.cs",
-              "RelativeDocumentMoniker": "Models\\ShadowPrice.cs",
-              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ShadowPrice.cs",
-              "RelativeToolTip": "Models\\ShadowPrice.cs",
+              "Title": "SensitivityAnalyzer.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityAnalyzer.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\SensitivityAnalyzer.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityAnalyzer.cs",
+              "RelativeToolTip": "Services\\Analysis\\SensitivityAnalyzer.cs",
+              "ViewState": "AgIAAB0CAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:07:25.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SensitivityEventHandlers.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SensitivityEventHandlers.cs",
+              "RelativeDocumentMoniker": "SensitivityEventHandlers.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SensitivityEventHandlers.cs",
+              "RelativeToolTip": "SensitivityEventHandlers.cs",
+              "ViewState": "AgIAAB4CAAAAAAAAAABRwCECAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:07:07.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TabbedMainForm.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
+              "RelativeDocumentMoniker": "TabbedMainForm.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\TabbedMainForm.cs",
+              "RelativeToolTip": "TabbedMainForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:03:45.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DualityAnalyzer.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\DualityAnalyzer.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\DualityAnalyzer.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\DualityAnalyzer.cs",
+              "RelativeToolTip": "Services\\Analysis\\DualityAnalyzer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:00:03.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SENSITIVITY_TESTING_GUIDE.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SENSITIVITY_TESTING_GUIDE.md",
+              "RelativeDocumentMoniker": "SENSITIVITY_TESTING_GUIDE.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\SENSITIVITY_TESTING_GUIDE.md",
+              "RelativeToolTip": "SENSITIVITY_TESTING_GUIDE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-24T23:11:21.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IMPLEMENTATION_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\IMPLEMENTATION_SUMMARY.md",
+              "RelativeDocumentMoniker": "IMPLEMENTATION_SUMMARY.md",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\IMPLEMENTATION_SUMMARY.md",
+              "RelativeToolTip": "IMPLEMENTATION_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-24T23:12:01.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddActivityDialog.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\UI\\Dialogs\\AddActivityDialog.cs",
+              "RelativeDocumentMoniker": "UI\\Dialogs\\AddActivityDialog.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\UI\\Dialogs\\AddActivityDialog.cs",
+              "RelativeToolTip": "UI\\Dialogs\\AddActivityDialog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T23:41:52.775Z"
+              "WhenOpened": "2025-08-24T23:02:17.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModelChange.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ModelChange.cs",
+              "RelativeDocumentMoniker": "Models\\ModelChange.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ModelChange.cs",
+              "RelativeToolTip": "Models\\ModelChange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:01:40.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ComprehensiveSensitivityResult.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ComprehensiveSensitivityResult.cs",
+              "RelativeDocumentMoniker": "Models\\ComprehensiveSensitivityResult.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\ComprehensiveSensitivityResult.cs",
+              "RelativeToolTip": "Models\\ComprehensiveSensitivityResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:01:24.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DualityVerificationResult.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualityVerificationResult.cs",
+              "RelativeDocumentMoniker": "Models\\DualityVerificationResult.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Models\\DualityVerificationResult.cs",
+              "RelativeToolTip": "Models\\DualityVerificationResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:01:06.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SensitivityEngine.cs",
+              "DocumentMoniker": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityEngine.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\SensitivityEngine.cs",
+              "ToolTip": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\Services\\Analysis\\SensitivityEngine.cs",
+              "RelativeToolTip": "Services\\Analysis\\SensitivityEngine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T23:00:44.775Z",
+              "EditorCaption": ""
             }
           ]
         }

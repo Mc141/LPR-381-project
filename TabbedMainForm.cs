@@ -662,7 +662,6 @@ namespace LPR381_Assignment
             saNB_Apply = nbVarControls.applyBtn;
             saNB_Output = nbVarControls.outputList;
 
-            saNB_VarSelect.Items.AddRange(new[] { "x1", "x2", "x3" });
             saNB_Apply.Text = "Apply Delta c";
             pnlSA_VarNonBasic.Controls.AddRange(new Control[] {
                 saNB_VarSelect, saNB_ShowRange, saNB_ApplyDelta, saNB_Apply, saNB_Output
@@ -744,19 +743,19 @@ namespace LPR381_Assignment
             secondaryLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             // Add Activity
-            pnlSA_AddActivity = CreateSAGroup("Add New Activity (Column)", 180);
+            pnlSA_AddActivity = CreateSAGroup("Add New Activity (Column)", 320);
             pnlSA_AddActivity.Margin = new Padding(0, 0, 12, 16);
             pnlSA_AddActivity.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saAddAct_Add = new Button { Text = "Add Activity…", Left = 20, Top = 50, Width = 180, Height = 40 };
-            saAddAct_Output = CreateCompactOutputList(220, 50, 500, 90);
+            saAddAct_Output = CreateCompactOutputList(20, 110, 800, 160);
             pnlSA_AddActivity.Controls.AddRange(new Control[] { saAddAct_Add, saAddAct_Output });
 
             // Add Constraint
-            pnlSA_AddConstraint = CreateSAGroup("Add New Constraint (Row)", 180);
+            pnlSA_AddConstraint = CreateSAGroup("Add New Constraint (Row)", 320);
             pnlSA_AddConstraint.Margin = new Padding(12, 0, 0, 16);
             pnlSA_AddConstraint.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             saAddCon_Add = new Button { Text = "Add Constraint…", Left = 20, Top = 50, Width = 180, Height = 40 };
-            saAddCon_Output = CreateCompactOutputList(220, 50, 500, 90);
+            saAddCon_Output = CreateCompactOutputList(20, 110, 800, 160);
             pnlSA_AddConstraint.Controls.AddRange(new Control[] { saAddCon_Add, saAddCon_Output });
 
             // Shadow Prices - Fixed button positioning and consistent textbox layout
@@ -1232,6 +1231,9 @@ namespace LPR381_Assignment
             // Now that we have a valid model, enable the buttons that need it
             btnValidateInput.Enabled = true;
             btnSolve.Enabled = true;
+            
+            // Update sensitivity analysis dropdowns
+            UpdateVariableDropdowns();
         }
 
         // Handles saving a model file
