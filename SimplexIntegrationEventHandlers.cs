@@ -71,6 +71,39 @@ namespace LPR381_Assignment
                 // Solve the model
                 _lastSolveResult = _simplexEngine.Solve(_currentModel, algorithmName);
 
+                // Handle integer programming results
+                if (algorithmName.Contains("Branch & Bound"))
+                {
+                    if (_lastSolveResult is BranchAndBoundResult bnbResult)
+                    {
+                        _lastBnBResult = bnbResult;
+                        UpdateNodeTreeDisplay(bnbResult);
+                    }
+                    else
+                    {
+                        // Clear node tree if not a B&B result
+                        ClearIntegerProgrammingResults();
+                    }
+                }
+                else if (algorithmName == "Cutting Plane")
+                {
+                    if (_lastSolveResult is CuttingPlaneResult cutResult)
+                    {
+                        _lastCuttingPlaneResult = cutResult;
+                        UpdateCutsDisplay(cutResult);
+                    }
+                    else
+                    {
+                        // Clear cuts if not a cutting plane result
+                        ClearIntegerProgrammingResults();
+                    }
+                }
+                else
+                {
+                    // Clear integer programming displays for LP algorithms
+                    ClearIntegerProgrammingResults();
+                }
+
                 // Debug: Print initial and final tableau information
                 if (_lastSolveResult.InitialTableau != null)
                 {
@@ -742,6 +775,9 @@ namespace LPR381_Assignment
                 // Connect iteration details handler
                 lvIterations.DoubleClick += LvIterations_DoubleClick;
                 
+                // Connect integer programming handlers
+                ConnectIntegerProgrammingHandlers();
+                
                 // Note: Expand/collapse buttons have been removed since we now use the expanded format by default
                 
                 // Ensure correct algorithm status is shown
@@ -788,6 +824,9 @@ namespace LPR381_Assignment
                 {
                     lvIterations.EndUpdate();
                 }
+                
+                // Clear integer programming results (nodes and cuts)
+                ClearIntegerProgrammingResults();
                 
                 // Clear any cached solve result
                 _lastSolveResult = null;

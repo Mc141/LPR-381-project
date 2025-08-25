@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using LPR381_Assignment.Models;
+using SimplexTableau = LPR381_Assignment.Models.SimplexTableau;
 
 namespace LPR381_Assignment.Services.Algorithms
 {
@@ -261,7 +262,7 @@ namespace LPR381_Assignment.Services.Algorithms
                 
                 var pivotColumn = CalculatePivotColumn(matrices, enteringIndex);
                 iterationDetails.AppendLine();
-                iterationDetails.AppendLine("PIVOT COLUMN (B?¹A_j):");
+                iterationDetails.AppendLine("PIVOT COLUMN (B?ï¿½A_j):");
                 for (int i = 0; i < pivotColumn.Length; i++)
                 {
                     int basicVarIndex = matrices.BasicVariableIndices[i];

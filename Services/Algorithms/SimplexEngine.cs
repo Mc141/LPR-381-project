@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using LPR381_Assignment.Models;
 
@@ -27,81 +28,126 @@ namespace LPR381_Assignment.Services.Algorithms
         }
 
         /// <summary>
-        /// Solves an LP model using the specified algorithm
+        /// Solves an LP/IP model using the specified algorithm
         /// </summary>
-        /// <param name="model">The LP model to solve</param>
+        /// <param name="model">The model to solve</param>
         /// <param name="algorithmName">Name of the algorithm to use</param>
         /// <returns>Solution result</returns>
         public SolverResult Solve(LPModel model, string algorithmName)
         {
-            if (model == null)
-                throw new ArgumentNullException(nameof(model));
-
-            if (string.IsNullOrWhiteSpace(algorithmName))
-                throw new ArgumentException("Algorithm name cannot be null or empty", nameof(algorithmName));
-
-            // Validate model first
-            var validation = ValidateModel(model);
-            if (!validation.IsValid)
+            var stopwatch = Stopwatch.StartNew();
+            
+            var result = new SolverResult
             {
-                return new SolverResult
-                {
-                    IsSuccessful = false,
-                    Status = SolutionStatus.Error,
-                    ErrorMessage = $"Model validation failed: {string.Join(", ", validation.Errors)}",
-                    AlgorithmUsed = algorithmName,
-                    OriginalModel = model
-                };
-            }
-
-            // Get the appropriate solver
-            if (!_solvers.TryGetValue(algorithmName, out var solver))
-            {
-                return new SolverResult
-                {
-                    IsSuccessful = false,
-                    Status = SolutionStatus.Error,
-                    ErrorMessage = $"Unknown algorithm: {algorithmName}. Available algorithms: {string.Join(", ", AvailableAlgorithms)}",
-                    AlgorithmUsed = algorithmName,
-                    OriginalModel = model
-                };
-            }
-
-            // Check if solver supports this model type
-            if (!solver.SupportsModel(model))
-            {
-                return new SolverResult
-                {
-                    IsSuccessful = false,
-                    Status = SolutionStatus.Error,
-                    ErrorMessage = $"Algorithm '{algorithmName}' does not support this model type",
-                    AlgorithmUsed = algorithmName,
-                    OriginalModel = model
-                };
-            }
-
+                AlgorithmUsed = algorithmName,
+                OriginalModel = model,
+                SolveStartTime = DateTime.Now
+            };
+            
             try
             {
-                // Solve the model
-                var result = solver.Solve(model);
+                IAlgorithmSolver? solver = algorithmName switch
+                {
+                    "Primal Simplex" => new SimplexSolver(),
+                    "Revised Primal Simplex" => new RevisedSimplexSolver(),
+                    "Branch & Bound (Simplex)" => new BranchAndBoundSimplex(this),
+                    "Branch & Bound (Knapsack)" => new BranchAndBoundKnapsack(),
+                    "Cutting Plane" => new CuttingPlaneSolver(),
+                    _ => null
+                };
                 
-                // Add engine-level information
-                result.AdditionalInfo["Engine"] = "SimplexEngine";
-                result.AdditionalInfo["ValidationPassed"] = true;
-                result.AdditionalInfo["ModelType"] = DetermineModelType(model);
-
+                if (solver == null)
+                {
+                    result.IsSuccessful = false;
+                    result.Status = SolutionStatus.Error;
+                    result.ErrorMessage = $"Unknown algorithm: {algorithmName}";
+                    return result;
+                }
+                
+                // Check if the solver supports this type of model
+                if (!solver.SupportsModel(model))
+                {
+                    // For integer programming problems with LP algorithms, ask user
+                    bool hasIntegerVars = model.Variables.Values.Any(v => 
+                        v.SignRestriction == SignRestriction.Integer || 
+                        v.SignRestriction == SignRestriction.Binary);
+                        
+                    if (hasIntegerVars && (algorithmName == "Primal Simplex" || algorithmName == "Revised Primal Simplex"))
+                    {
+                        result.Warnings.Add("Model contains integer variables. LP relaxation will be solved.");
+                        // Continue with LP relaxation
+                    }
+                    else
+                    {
+                        result.IsSuccessful = false;
+                        result.Status = SolutionStatus.Error;
+                        result.ErrorMessage = $"Algorithm '{algorithmName}' does not support this type of model.";
+                        return result;
+                    }
+                }
+                
+                // Generate canonical form
+                var canonicalGenerator = new CanonicalFormGenerator();
+                result.CanonicalForm = canonicalGenerator.GenerateCanonicalForm(model);
+                
+                if (!result.CanonicalForm.IsValid)
+                {
+                    result.IsSuccessful = false;
+                    result.Status = SolutionStatus.Error;
+                    result.ErrorMessage = $"Failed to generate canonical form: {result.CanonicalForm.ErrorMessage}";
+                    return result;
+                }
+                
+                result.InitialTableau = result.CanonicalForm.Tableau;
+                
+                // Solve using the selected algorithm
+                var solveResult = solver.Solve(model);
+                
+                // Copy results
+                result.IsSuccessful = solveResult.IsSuccessful;
+                result.Status = solveResult.Status;
+                result.ObjectiveValue = solveResult.ObjectiveValue;
+                result.Solution = solveResult.Solution;
+                result.ErrorMessage = solveResult.ErrorMessage;
+                result.FinalTableau = solveResult.FinalTableau;
+                result.Iterations = solveResult.Iterations;
+                result.IterationCount = solveResult.IterationCount;
+                result.Warnings.AddRange(solveResult.Warnings);
+                result.AdditionalInfo = solveResult.AdditionalInfo;
+                
+                // For integer programming results, copy additional information
+                if (solveResult is BranchAndBoundResult bnbResult)
+                {
+                    result.AdditionalInfo["NodesProcessed"] = bnbResult.NodesProcessed.ToString();
+                    result.AdditionalInfo["NodesFathomed"] = bnbResult.NodesFathomed.ToString();
+                    result.AdditionalInfo["RootBound"] = bnbResult.RootBound.ToString("F3");
+                    if (!double.IsNaN(bnbResult.OptimalityGap))
+                    {
+                        result.AdditionalInfo["OptimalityGap"] = $"{bnbResult.OptimalityGap:F3}%";
+                    }
+                }
+                else if (solveResult is CuttingPlaneResult cutResult)
+                {
+                    result.AdditionalInfo["CutsGenerated"] = cutResult.CutsGenerated.Count.ToString();
+                    result.AdditionalInfo["IntegerVariables"] = string.Join(", ", cutResult.IntegerVariables);
+                }
+                
+                stopwatch.Stop();
+                result.ExecutionTimeMs = stopwatch.Elapsed.TotalMilliseconds;
+                result.SolveEndTime = DateTime.Now;
+                
                 return result;
             }
             catch (Exception ex)
             {
-                return new SolverResult
-                {
-                    IsSuccessful = false,
-                    Status = SolutionStatus.Error,
-                    ErrorMessage = $"Unexpected error during solving: {ex.Message}",
-                    AlgorithmUsed = algorithmName,
-                    OriginalModel = model
-                };
+                stopwatch.Stop();
+                result.IsSuccessful = false;
+                result.Status = SolutionStatus.Error;
+                result.ErrorMessage = $"Unexpected error during solving: {ex.Message}";
+                result.ExecutionTimeMs = stopwatch.Elapsed.TotalMilliseconds;
+                result.SolveEndTime = DateTime.Now;
+                
+                return result;
             }
         }
 

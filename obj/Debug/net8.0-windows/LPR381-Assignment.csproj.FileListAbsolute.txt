@@ -80,3 +80,37 @@ C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\refint\LPR3
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\LPR381-Assignment.pdb
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\LPR381-Assignment.genruntimeconfig.cache
 C:\Users\MC\Desktop\Code\C#\LPR-381-project\obj\Debug\net8.0-windows\ref\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\bin\Debug\net8.0-windows\LPR381-Assignment.exe
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\bin\Debug\net8.0-windows\LPR381-Assignment.deps.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\bin\Debug\net8.0-windows\LPR381-Assignment.runtimeconfig.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\bin\Debug\net8.0-windows\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\bin\Debug\net8.0-windows\LPR381-Assignment.pdb
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381_Assignment.TabbedMainForm.resources
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.csproj.GenerateResource.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.AssemblyInfoInputs.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.AssemblyInfo.cs
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.csproj.CoreCompileInputs.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.sourcelink.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\refint\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.pdb
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\LPR381-Assignment.genruntimeconfig.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project - Copy\obj\Debug\net8.0-windows\ref\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\bin\Debug\net8.0-windows\LPR381-Assignment.exe
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\bin\Debug\net8.0-windows\LPR381-Assignment.deps.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\bin\Debug\net8.0-windows\LPR381-Assignment.runtimeconfig.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\bin\Debug\net8.0-windows\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\bin\Debug\net8.0-windows\LPR381-Assignment.pdb
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381_Assignment.TabbedMainForm.resources
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.csproj.GenerateResource.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.AssemblyInfoInputs.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.AssemblyInfo.cs
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.csproj.CoreCompileInputs.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.sourcelink.json
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\refint\LPR381-Assignment.dll
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.pdb
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\LPR381-Assignment.genruntimeconfig.cache
+C:\Users\MC\Desktop\Code\C#\LPR-381-project copy\obj\Debug\net8.0-windows\ref\LPR381-Assignment.dll

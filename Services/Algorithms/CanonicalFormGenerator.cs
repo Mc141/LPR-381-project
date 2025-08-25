@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LPR381_Assignment.Models;
+using SimplexTableau = LPR381_Assignment.Models.SimplexTableau;
 
 namespace LPR381_Assignment.Services.Algorithms
 {

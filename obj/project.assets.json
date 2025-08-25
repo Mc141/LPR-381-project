@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\LPR381-Assignment.csproj",
+      "projectUniqueName": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project copy\\LPR381-Assignment.csproj",
       "projectName": "LPR381-Assignment",
-      "projectPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\LPR381-Assignment.csproj",
+      "projectPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project copy\\LPR381-Assignment.csproj",
       "packagesPath": "C:\\Users\\MC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project\\obj\\",
+      "outputPath": "C:\\Users\\MC\\Desktop\\Code\\C#\\LPR-381-project copy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
